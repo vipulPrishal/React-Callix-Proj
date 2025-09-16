@@ -37,6 +37,11 @@ export function NavbarMenu() {
         path: '/authentication/get-started',
         partial: '/authentication',
       },
+      {
+        title: 'AI Agent',
+        path: '/ai-agent',
+        partial: '/ai-agent',
+      },
     ],
 
     [], // Empty dependency array since the data is static
