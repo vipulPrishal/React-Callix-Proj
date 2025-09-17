@@ -93,6 +93,7 @@ import {
   WishlistPage,
 } from '@/pages/store-client';
 import { Navigate, Route, Routes } from 'react-router';
+import AiAgent from '../pages/ai-agent/ai-agent';
 
 export function AppRoutingSetup() {
   return (
@@ -120,6 +121,9 @@ export function AppRoutingSetup() {
             path="/public-profile/profiles/nft"
             element={<ProfileNFTPage />}
           />
+
+          <Route path="/ai-agent" element={<AiAgent />} />
+          {/* Added the route for ai-agent */}
 
           <Route
             path="/public-profile/profiles/blogger"
