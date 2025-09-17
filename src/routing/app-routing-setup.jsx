@@ -122,9 +122,6 @@ export function AppRoutingSetup() {
             element={<ProfileNFTPage />}
           />
 
-          <Route path="/ai-agent" element={<AiAgent />} />
-          {/* Added the route for ai-agent */}
-
           <Route
             path="/public-profile/profiles/blogger"
             element={<ProfileBloggerPage />}
@@ -450,8 +447,11 @@ export function AppRoutingSetup() {
           />
 
           <Route path="/auth/get-started" element={<AccountGetStartedPage />} />
+          <Route path="/ai-agent" element={<AiAgent />} />
+          {/* Added the route for ai-agent */}
         </Route>
       </Route>
+
       <Route path="error/*" element={<ErrorRouting />} />
       <Route path="auth/*" element={<AuthRouting />} />
       <Route path="*" element={<Navigate to="/error/404" />} />

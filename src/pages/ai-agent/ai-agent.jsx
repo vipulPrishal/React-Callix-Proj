@@ -128,9 +128,10 @@ const AiAgent = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    // <div className="min-h-screen bg-background ">
+    <div className="min-h-screen bg-background mt-[-15px] ">
       {/* Header Section */}
-      <div className="text-center py-16">
+      <div className="text-center ">
         <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
           Create your <span className="text-primary">Free</span> Voice{' '}
           <span className="text-primary">AI</span> Assistant
@@ -141,13 +142,13 @@ const AiAgent = () => {
 
         {/* Input Section */}
         <Container>
-          <div className="max-w-4xl mx-auto mb-16">
+          <div className="max-w-6xl mx-auto mb-2 ">
             <div className="relative">
               <Textarea
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
                 placeholder="Create a voice AI assistant that handles new membership applications at a gym."
-                className="min-h-[120px] text-lg p-6 border-2 border-primary/20 focus:border-primary focus:ring-4 focus:ring-primary/10 resize-none"
+                className="min-h-[200px] text-lg p-6 border-2 border-primary/20 focus:border-[#408bff]  "
                 variant="lg"
               />
               <Button
@@ -230,7 +231,7 @@ const AiAgent = () => {
       </div>
 
       {/* Footer Section */}
-      <div className="text-center py-16 border-t border-border">
+      <div className="text-center py-16 ">
         <p className="text-muted-foreground mb-8">
           Trusted by leading companies
         </p>

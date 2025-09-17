@@ -26,7 +26,7 @@ export function ProfileWorksPage() {
   );
 
   return (
-    <Fragment>
+    <>
       <UserHero
         name="Jenny Klabber"
         image={image}
@@ -60,6 +60,6 @@ export function ProfileWorksPage() {
       <Container>
         <Works />
       </Container>
-    </Fragment>
+    </>
   );
 }
