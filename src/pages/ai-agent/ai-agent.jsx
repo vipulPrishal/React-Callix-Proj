@@ -1,4 +1,4 @@
-// // version 1:-----
+// // // version 1:-----
 
 // import React, { useState } from 'react';
 // import {
@@ -9,6 +9,7 @@
 //   GraduationCap,
 //   MapPin,
 //   Phone,
+//   Sparkles,
 //   Star,
 //   TrendingUp,
 //   Users,
@@ -20,12 +21,9 @@
 // import { Container } from '@/components/common/container';
 
 // const AiAgent = () => {
-//   const [prompt, setPrompt] = useState(
-//     'Create a voice AI assistant that handles new membership applications at a gym.',
-//   );
+//   const [prompt, setPrompt] = useState('');
 //   const [activeTab, setActiveTab] = useState('popular');
 
-//   // Template data
 //   const templates = {
 //     popular: [
 //       {
@@ -116,131 +114,167 @@
 //   };
 
 //   return (
-//     // <div className="min-h-screen bg-background ">
-//     <div className="min-h-screen bg-background mt-[-15px] mr-auto ml-[10%]">
-//       {/* Header Section */}
-//       <div className="text-center ">
-//         <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-//           Create your <span className="text-primary">Free</span> Voice{' '}
-//           <span className="text-primary">AI</span> Assistant
-//         </h1>
-//         <p className="text-xl text-muted-foreground mb-12">
-//           Build, test, and ship reliable voice AI assistants just by prompting.
-//         </p>
-
-//         {/* Input Section */}
+//     <>
+//       {/* Hero + Prompt */}
+//       <div className="bg-background">
 //         <Container>
-//           <div className="max-w-6xl mx-auto mb-2 ">
-//             <div className="relative">
+//           <div className="text-center  pb-6">
+//             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+//               Create your <span className="text-primary">Free</span> Voice{' '}
+//               <span className="text-primary">AI</span> Assistant
+//             </h1>
+//             <p className="text-xl text-muted-foreground">
+//               Build, test, and ship reliable voice AI assistants just by
+//               prompting.
+//             </p>
+//           </div>
+
+//           {/* Prompt box */}
+//           <div className="max-w-6xl mx-auto mb-6 ">
+//             {/* I ADDED a custom shadow to the parent div only */}
+//             <div className="relative rounded-lg min-h-[200px] shadow-[0_0_25px_rgba(59,130,246,0.5)] focus-within:border-2 focus-within:border-[#408bff]">
+//               {/* <div className="relative rounded-lg min-h-[200px] shadow-2xl shadow-blue-500/50 mt-4 focus-within:border-2 focus-within:border-[#408bff]"> */}
 //               <Textarea
 //                 value={prompt}
 //                 onChange={(e) => setPrompt(e.target.value)}
 //                 placeholder="Create a voice AI assistant that handles new membership applications at a gym."
-//                 className="min-h-[200px] text-lg p-6 border-2 border-primary/20 focus:border-[#408bff]  "
+//                 // className=" min-h-[200px] text-lg px-6 resize-none  border-none  focus:!border-none focus:!ring-0"
+//                 className=" min-h-[200px] text-lg px-6 resize-none  border-none  focus:!border-none focus:!ring-0"
 //                 variant="lg"
 //               />
-//               <Button
-//                 className="absolute bottom-4 right-4 bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg shadow-lg"
-//                 size="lg"
-//               >
-//                 Create Agent
-//                 <ArrowRight className="ml-2 h-4 w-4" />
-//               </Button>
+
+//               <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+//                 <Button
+//                   variant="outline"
+//                   size="sm"
+//                   className="border-primary/30 text-primary hover:bg-primary/10"
+//                 >
+//                   <Sparkles className="w-4 h-4 mr-2" />
+//                   Enhance Prompt
+//                 </Button>
+//                 <Button
+//                   size="lg"
+//                   disabled={!prompt.trim()}
+//                   className={`px-6 py-3 rounded-lg shadow-lg ${
+//                     prompt.trim()
+//                       ? 'bg-primary hover:bg-primary/90 text-white'
+//                       : 'bg-gray-400 text-gray-200 cursor-not-allowed'
+//                   }`}
+//                 >
+//                   Create Agent
+//                   <ArrowRight className="ml-2 h-4 w-4" />
+//                 </Button>
+//               </div>
 //             </div>
-//           </div>
-
-//           {/* Template Categories */}
-//           <div className="max-w-6xl mx-auto">
-//             <h2 className="text-2xl font-semibold text-foreground mb-8">
-//               Template Categories
-//             </h2>
-
-//             <Tabs
-//               value={activeTab}
-//               onValueChange={setActiveTab}
-//               className="w-full"
-//             >
-//               <TabsList className="grid w-full grid-cols-4 mb-8 ">
-//                 <TabsTrigger
-//                   value="popular"
-//                   className="data-[state=active]:bg-primary data-[state=active]:text-white"
-//                 >
-//                   Popular
-//                 </TabsTrigger>
-//                 <TabsTrigger
-//                   value="sales"
-//                   className="data-[state=active]:bg-primary data-[state=active]:text-white"
-//                 >
-//                   Sales
-//                 </TabsTrigger>
-//                 <TabsTrigger
-//                   value="customer"
-//                   className="data-[state=active]:bg-primary data-[state=active]:text-white"
-//                 >
-//                   Customer Experience
-//                 </TabsTrigger>
-//                 <TabsTrigger
-//                   value="business"
-//                   className="data-[state=active]:bg-primary data-[state=active]:text-white"
-//                 >
-//                   Business
-//                 </TabsTrigger>
-//               </TabsList>
-
-//               <TabsContent value={activeTab} className="mt-0">
-//                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left ">
-//                   {templates[activeTab]?.map((template, index) => (
-//                     <Card
-//                       key={index}
-//                       className="hover:shadow-lg transition-shadow cursor-pointer"
-//                     >
-//                       <CardContent className="p-6">
-//                         <div className="flex items-start gap-4">
-//                           <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-//                             <template.icon className="w-6 h-6 text-primary" />
-//                           </div>
-//                           <div className="flex-1">
-//                             <h3 className="text-lg font-semibold text-foreground mb-2">
-//                               {template.title}
-//                             </h3>
-//                             <p className="text-muted-foreground text-sm leading-relaxed">
-//                               {template.description}
-//                             </p>
-//                           </div>
-//                         </div>
-//                       </CardContent>
-//                     </Card>
-//                   ))}
-//                 </div>
-//               </TabsContent>
-//             </Tabs>
 //           </div>
 //         </Container>
 //       </div>
 
-//       {/* Footer Section */}
-//       <div className="text-center py-16 ">
-//         <p className="text-muted-foreground mb-8">
-//           Trusted by leading companies
-//         </p>
-//         <div className="flex justify-center items-center gap-8 flex-wrap">
-//           <div className="text-muted-foreground font-semibold">Capgemini</div>
-//           <div className="text-muted-foreground font-semibold">Exotel</div>
-//           <div className="text-muted-foreground font-semibold">NVIDIA</div>
-//           <div className="text-muted-foreground font-semibold">MG Motors</div>
-//           <div className="text-muted-foreground font-semibold">
-//             Heterize Infotech
-//           </div>
+//       {/* Template Categories + Cards */}
+//       <Container>
+//         <div className="max-w-6xl mx-auto">
+//           <h2 className="text-2xl font-semibold text-foreground mb-4 text-center">
+//             Template Categories
+//           </h2>
+
+//           <Tabs
+//             value={activeTab}
+//             onValueChange={setActiveTab}
+//             className="w-full"
+//           >
+//             <TabsList className="w-full grid grid-cols-4 bg-muted p-1 rounded-md">
+//               <TabsTrigger
+//                 value="popular"
+//                 className="h-10 w-full justify-center rounded-md
+//                            text-secondary-foreground
+//                            data-[state=active]:bg-primary data-[state=active]:text-white"
+//               >
+//                 Popular
+//               </TabsTrigger>
+//               <TabsTrigger
+//                 value="sales"
+//                 className="h-10 w-full justify-center rounded-md
+//                            text-secondary-foreground
+//                            data-[state=active]:bg-primary data-[state=active]:text-white"
+//               >
+//                 Sales
+//               </TabsTrigger>
+//               <TabsTrigger
+//                 value="customer"
+//                 className="h-10 w-full justify-center rounded-md
+//                            text-secondary-foreground
+//                            data-[state=active]:bg-primary data-[state=active]:text-white"
+//               >
+//                 Customer Experience
+//               </TabsTrigger>
+//               <TabsTrigger
+//                 value="business"
+//                 className="h-10 w-full justify-center rounded-md
+//                            text-secondary-foreground
+//                            data-[state=active]:bg-primary data-[state=active]:text-white"
+//               >
+//                 Business
+//               </TabsTrigger>
+//             </TabsList>
+
+//             <TabsContent value={activeTab} className="mt-8">
+//               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+//                 {templates[activeTab]?.map((template, idx) => (
+//                   <Card
+//                     key={idx}
+//                     className="hover:shadow-lg transition-shadow cursor-pointer"
+//                   >
+//                     <CardContent className="p-6">
+//                       <div className="flex items-start gap-4">
+//                         <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+//                           <template.icon className="w-6 h-6 text-primary" />
+//                         </div>
+//                         <div className="flex-1">
+//                           <h3 className="text-lg font-semibold text-foreground mb-2">
+//                             {template.title}
+//                           </h3>
+//                           <p className="text-muted-foreground text-sm leading-relaxed">
+//                             {template.description}
+//                           </p>
+//                         </div>
+//                       </div>
+//                     </CardContent>
+//                   </Card>
+//                 ))}
+//               </div>
+//             </TabsContent>
+//           </Tabs>
 //         </div>
+//       </Container>
+
+//       {/* Footer */}
+//       <div className="text-center py-10 bg-background">
+//         <Container>
+//           <p className="text-muted-foreground mb-8">
+//             Trusted by leading companies
+//           </p>
+//           <div className="flex justify-center items-center gap-8 flex-wrap">
+//             <div className="text-muted-foreground font-semibold">Capgemini</div>
+//             <div className="text-muted-foreground font-semibold">Exotel</div>
+//             <div className="text-muted-foreground font-semibold">NVIDIA</div>
+//             <div className="text-muted-foreground font-semibold">MG Motors</div>
+//             <div className="text-muted-foreground font-semibold">
+//               Heterize Infotech
+//             </div>
+//           </div>
+//         </Container>
 //       </div>
-//     </div>
+//     </>
 //   );
 // };
 
 // export default AiAgent;
 
-// -----v2:---------removing text area with an input to add the feature of typewriter.....
-import React, { useState } from 'react';
+// ---version 2:--- fixing typeWriter effect-----
+
+// // version 1:-----
+
+import React, { useEffect, useState } from 'react';
 import {
   ArrowRight,
   Building,
@@ -263,6 +297,13 @@ import { Container } from '@/components/common/container';
 const AiAgent = () => {
   const [prompt, setPrompt] = useState('');
   const [activeTab, setActiveTab] = useState('popular');
+  const [typewriterText, setTypewriterText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(continuousTypewriter, isDeleting ? 50 : 50);
+    return () => clearInterval(interval);
+  }, [typewriterText, isDeleting]);
 
   const templates = {
     popular: [
@@ -352,6 +393,30 @@ const AiAgent = () => {
       },
     ],
   };
+  const fullText =
+    'Create a voice AI assistant that handles new membership applications at a gym.';
+
+  const continuousTypewriter = () => {
+    const currentText = fullText;
+
+    if (!isDeleting) {
+      // Typing forward
+      if (typewriterText.length < currentText.length) {
+        setTypewriterText(currentText.slice(0, typewriterText.length + 1));
+      } else {
+        // Start deleting after a pause
+        setTimeout(() => setIsDeleting(true), 1000);
+      }
+    } else {
+      // Deleting backward
+      if (typewriterText.length > 0) {
+        setTypewriterText(typewriterText.slice(0, -1));
+      } else {
+        // Start typing again
+        setIsDeleting(false);
+      }
+    }
+  };
 
   return (
     <>
@@ -377,7 +442,8 @@ const AiAgent = () => {
               <Textarea
                 value={prompt}
                 onChange={(e) => setPrompt(e.target.value)}
-                placeholder="Create a voice AI assistant that handles new membership applications at a gym."
+                // placeholder="Create a voice AI assistant that handles new membership applications at a gym."
+                placeholder={typewriterText}
                 // className=" min-h-[200px] text-lg px-6 resize-none  border-none  focus:!border-none focus:!ring-0"
                 className=" min-h-[200px] text-lg px-6 resize-none  border-none  focus:!border-none focus:!ring-0"
                 variant="lg"
