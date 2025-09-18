@@ -528,7 +528,8 @@ const AiAgent = () => {
                 {templates[activeTab]?.map((template, idx) => (
                   <Card
                     key={idx}
-                    className="hover:shadow-lg transition-shadow cursor-pointer"
+                    // className="hover:shadow-lg transition-shadow cursor-pointer"
+                    className="hover:shadow-lg hover:bg-blue-500/10 hover:border-blue-500/30 transition-all duration-300 cursor-pointer"
                   >
                     <CardContent className="p-6">
                       <div className="flex items-start gap-4">
