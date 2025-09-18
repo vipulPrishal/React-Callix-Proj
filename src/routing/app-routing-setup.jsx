@@ -448,6 +448,7 @@ export function AppRoutingSetup() {
 
           <Route path="/auth/get-started" element={<AccountGetStartedPage />} />
           <Route path="/ai-agent" element={<AiAgent />} />
+
           {/* Added the route for ai-agent */}
         </Route>
       </Route>
