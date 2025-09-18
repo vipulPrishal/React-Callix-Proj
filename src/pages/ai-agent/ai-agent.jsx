@@ -1,4 +1,4 @@
-// // version 1:-----
+// version 1:----- (fully working)
 
 import React, { useEffect, useState } from 'react';
 import {
@@ -328,6 +328,7 @@ const AiAgent = () => {
 export default AiAgent;
 
 // // version 2:-- Improving the template categories now
+
 // import React, { useEffect, useState } from 'react';
 // import {
 //   ArrowRight,
@@ -335,8 +336,10 @@ export default AiAgent;
 //   Building,
 //   Calendar,
 //   ChartLine,
+//   ChevronDown,
 //   ChevronLeft,
 //   ChevronRight,
+//   ChevronUp,
 //   FileText,
 //   FlaskConical,
 //   GraduationCap,
@@ -366,8 +369,9 @@ export default AiAgent;
 //   const [activeTab, setActiveTab] = useState('popular');
 //   const [typewriterText, setTypewriterText] = useState('');
 //   const [isDeleting, setIsDeleting] = useState(false);
-//   // const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
+//   // const [currentTestimonial, setCurrentTestimonial] = useState(0);
+//   const [expandedCards, setExpandedCards] = useState({});
 //   useEffect(() => {
 //     const interval = setInterval(continuousTypewriter, isDeleting ? 50 : 50);
 //     return () => clearInterval(interval);
@@ -526,7 +530,12 @@ export default AiAgent;
 //       company: 'Sorrell Holdings LLC',
 //     },
 //   ];
-
+//   const toggleCard = (cardId) => {
+//     setExpandedCards((prev) => ({
+//       ...prev,
+//       [cardId]: !prev[cardId],
+//     }));
+//   };
 //   return (
 //     <div
 //       id="ai-agent-page  "
@@ -699,76 +708,76 @@ export default AiAgent;
 //       </div>
 //       {/* Testimonials Section */}
 //       {/* <section className="py-10 border-t border-border/30 relative overflow-hidden">
-//         <Container>
-//           <div className="text-center mb-12">
-//             <span className="inline-block px-4 py-1.5 mb-4 text-sm font-medium text-primary bg-primary/10 rounded-full">
-//               Testimonials
-//             </span>
-//             <h2 className="text-3xl font-bold tracking-tight">
-//               What Our Users Say
-//             </h2>
-//           </div>
+// //         <Container>
+// //           <div className="text-center mb-12">
+// //             <span className="inline-block px-4 py-1.5 mb-4 text-sm font-medium text-primary bg-primary/10 rounded-full">
+// //               Testimonials
+// //             </span>
+// //             <h2 className="text-3xl font-bold tracking-tight">
+// //               What Our Users Say
+// //             </h2>
+// //           </div>
 
-//           <div className="max-w-4xl mx-auto">
-//             <div className="relative min-h-[200px] flex items-center justify-center">
-//               <div className="text-center transition-all duration-500 ease-in-out">
-//                 <h3 className="md:text-2xl tracking-tight mb-6 text-muted-foreground">
-//                   "{testimonials[currentTestimonial].quote}"
-//                 </h3>
-//                 <p className="text-muted-foreground text-sm">
-//                   {testimonials[currentTestimonial].author}
-//                   {testimonials[currentTestimonial].company && (
-//                     <span>, {testimonials[currentTestimonial].company}</span>
-//                   )}
-//                 </p>
-//               </div>
-//             </div>
+// //           <div className="max-w-4xl mx-auto">
+// //             <div className="relative min-h-[200px] flex items-center justify-center">
+// //               <div className="text-center transition-all duration-500 ease-in-out">
+// //                 <h3 className="md:text-2xl tracking-tight mb-6 text-muted-foreground">
+// //                   "{testimonials[currentTestimonial].quote}"
+// //                 </h3>
+// //                 <p className="text-muted-foreground text-sm">
+// //                   {testimonials[currentTestimonial].author}
+// //                   {testimonials[currentTestimonial].company && (
+// //                     <span>, {testimonials[currentTestimonial].company}</span>
+// //                   )}
+// //                 </p>
+// //               </div>
+// //             </div>
 
-//             <div className="flex justify-center items-center mt-12 gap-2">
-//               <Button
-//                 variant="ghost"
-//                 size="sm"
-//                 className="h-9 w-9"
-//                 onClick={() =>
-//                   setCurrentTestimonial((prev) =>
-//                     prev === 0 ? testimonials.length - 1 : prev - 1,
-//                   )
-//                 }
-//               >
-//                 <ChevronLeft className="h-4 w-4" />
-//               </Button>
+// //             <div className="flex justify-center items-center mt-12 gap-2">
+// //               <Button
+// //                 variant="ghost"
+// //                 size="sm"
+// //                 className="h-9 w-9"
+// //                 onClick={() =>
+// //                   setCurrentTestimonial((prev) =>
+// //                     prev === 0 ? testimonials.length - 1 : prev - 1,
+// //                   )
+// //                 }
+// //               >
+// //                 <ChevronLeft className="h-4 w-4" />
+// //               </Button>
 
-//               <div className="flex gap-2">
-//                 {testimonials.map((_, index) => (
-//                   <button
-//                     key={index}
-//                     className={`w-2.5 h-2.5 rounded-full transition-all ${
-//                       index === currentTestimonial
-//                         ? 'bg-primary'
-//                         : 'bg-muted hover:bg-muted-foreground'
-//                     }`}
-//                     onClick={() => setCurrentTestimonial(index)}
-//                     aria-label={`Go to testimonial ${index + 1}`}
-//                   />
-//                 ))}
-//               </div>
+// //               <div className="flex gap-2">
+// //                 {testimonials.map((_, index) => (
+// //                   <button
+// //                     key={index}
+// //                     className={`w-2.5 h-2.5 rounded-full transition-all ${
+// //                       index === currentTestimonial
+// //                         ? 'bg-primary'
+// //                         : 'bg-muted hover:bg-muted-foreground'
+// //                     }`}
+// //                     onClick={() => setCurrentTestimonial(index)}
+// //                     aria-label={`Go to testimonial ${index + 1}`}
+// //                   />
+// //                 ))}
+// //               </div>
 
-//               <Button
-//                 variant="ghost"
-//                 size="sm"
-//                 className="h-9 w-9"
-//                 onClick={() =>
-//                   setCurrentTestimonial(
-//                     (prev) => (prev + 1) % testimonials.length,
-//                   )
-//                 }
-//               >
-//                 <ChevronRight className="h-4 w-4" />
-//               </Button>
-//             </div>
-//           </div>
-//         </Container>
-//       </section> */}
+// //               <Button
+// //                 variant="ghost"
+// //                 size="sm"
+// //                 className="h-9 w-9"
+// //                 onClick={() =>
+// //                   setCurrentTestimonial(
+// //                     (prev) => (prev + 1) % testimonials.length,
+// //                   )
+// //                 }
+// //               >
+// //                 <ChevronRight className="h-4 w-4" />
+// //               </Button>
+// //             </div>
+// //           </div>
+// //         </Container>
+// //       </section> */}
 //       {/* How it Works Section */}
 //       <section className="py-10 border-t border-border/30">
 //         <Container>
@@ -785,7 +794,11 @@ export default AiAgent;
 //           </div>
 
 //           <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-//             <Card className="rounded-xl border bg-card/80 p-6 hover:bg-card/60 flex flex-col items-center text-center cursor-pointer shadow-md border-primary">
+//             {/* Step 1: Write */}
+//             <Card
+//               className="rounded-xl border bg-card/80 p-6 hover:bg-card/60 flex flex-col items-center text-center cursor-pointer shadow-md border-primary"
+//               onClick={() => toggleCard('step1')}
+//             >
 //               <div className="rounded-full bg-primary/20 w-10 h-10 flex items-center justify-center mb-2 text-primary font-bold">
 //                 1
 //               </div>
@@ -796,9 +809,20 @@ export default AiAgent;
 //               <p className="text-muted-foreground text-sm mb-2">
 //                 Describe what type of Voice AI assistant you want
 //               </p>
+//               <div className="text-primary mt-auto">
+//                 {expandedCards.step1 ? (
+//                   <ChevronUp className="h-4 w-4" />
+//                 ) : (
+//                   <ChevronDown className="h-4 w-4" />
+//                 )}
+//               </div>
 //             </Card>
 
-//             <Card className="rounded-xl border bg-card/80 p-6 hover:bg-card/60 flex flex-col items-center text-center cursor-pointer shadow-md border-border/50 hover:border-primary/70">
+//             {/* Step 2: Test */}
+//             <Card
+//               className="rounded-xl border bg-card/80 p-6 hover:bg-card/60 flex flex-col items-center text-center cursor-pointer shadow-md border-border/50 hover:border-primary/70"
+//               onClick={() => toggleCard('step2')}
+//             >
 //               <div className="rounded-full bg-primary/20 w-10 h-10 flex items-center justify-center mb-2 text-primary font-bold">
 //                 2
 //               </div>
@@ -809,9 +833,20 @@ export default AiAgent;
 //               <p className="text-muted-foreground text-sm mb-2">
 //                 Try out your assistant and see how it performs
 //               </p>
+//               <div className="text-primary mt-auto">
+//                 {expandedCards.step2 ? (
+//                   <ChevronUp className="h-4 w-4" />
+//                 ) : (
+//                   <ChevronDown className="h-4 w-4" />
+//                 )}
+//               </div>
 //             </Card>
 
-//             <Card className="rounded-xl border bg-card/80 p-6 hover:bg-card/60 flex flex-col items-center text-center cursor-pointer shadow-md border-border/50 hover:border-primary/70">
+//             {/* Step 3: Add Functionalities */}
+//             <Card
+//               className="rounded-xl border bg-card/80 p-6 hover:bg-card/60 flex flex-col items-center text-center cursor-pointer shadow-md border-border/50 hover:border-primary/70"
+//               onClick={() => toggleCard('step3')}
+//             >
 //               <div className="rounded-full bg-primary/20 w-10 h-10 flex items-center justify-center mb-2 text-primary font-bold">
 //                 3
 //               </div>
@@ -824,9 +859,20 @@ export default AiAgent;
 //               <p className="text-muted-foreground text-sm mb-2">
 //                 Enhance through chat and drag-and-drop
 //               </p>
+//               <div className="text-primary mt-auto">
+//                 {expandedCards.step3 ? (
+//                   <ChevronUp className="h-4 w-4" />
+//                 ) : (
+//                   <ChevronDown className="h-4 w-4" />
+//                 )}
+//               </div>
 //             </Card>
 
-//             <Card className="rounded-xl border bg-card/80 p-6 hover:bg-card/60 flex flex-col items-center text-center cursor-pointer shadow-md border-border/50 hover:border-primary/70">
+//             {/* Step 4: Deploy */}
+//             <Card
+//               className="rounded-xl border bg-card/80 p-6 hover:bg-card/60 flex flex-col items-center text-center cursor-pointer shadow-md border-border/50 hover:border-primary/70"
+//               onClick={() => toggleCard('step4')}
+//             >
 //               <div className="rounded-full bg-primary/20 w-10 h-10 flex items-center justify-center mb-2 text-primary font-bold">
 //                 4
 //               </div>
@@ -837,9 +883,20 @@ export default AiAgent;
 //               <p className="text-muted-foreground text-sm mb-2">
 //                 Make your assistant available to your users
 //               </p>
+//               <div className="text-primary mt-auto">
+//                 {expandedCards.step4 ? (
+//                   <ChevronUp className="h-4 w-4" />
+//                 ) : (
+//                   <ChevronDown className="h-4 w-4" />
+//                 )}
+//               </div>
 //             </Card>
 
-//             <Card className="rounded-xl border bg-card/80 p-6 hover:bg-card/60 flex flex-col items-center text-center cursor-pointer shadow-md border-border/50 hover:border-primary/70">
+//             {/* Step 5: Observe & Monitor */}
+//             <Card
+//               className="rounded-xl border bg-card/80 p-6 hover:bg-card/60 flex flex-col items-center text-center cursor-pointer shadow-md border-border/50 hover:border-primary/70"
+//               onClick={() => toggleCard('step5')}
+//             >
 //               <div className="rounded-full bg-primary/20 w-10 h-10 flex items-center justify-center mb-2 text-primary font-bold">
 //                 5
 //               </div>
@@ -852,6 +909,13 @@ export default AiAgent;
 //               <p className="text-muted-foreground text-sm mb-2">
 //                 Track performance and make improvements
 //               </p>
+//               <div className="text-primary mt-auto">
+//                 {expandedCards.step5 ? (
+//                   <ChevronUp className="h-4 w-4" />
+//                 ) : (
+//                   <ChevronDown className="h-4 w-4" />
+//                 )}
+//               </div>
 //             </Card>
 //           </div>
 //         </Container>
