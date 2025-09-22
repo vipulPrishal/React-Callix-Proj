@@ -787,470 +787,920 @@ const AiAgent = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-            {/* Step 1: Write */}
-            <Card
-              className="rounded-xl border bg-card/80 p-6 hover:bg-card/60 flex flex-col items-center text-center cursor-pointer shadow-md hover:border-primary/70"
-              onClick={() => toggleCard('step1')}
-            >
-              <div className="rounded-full bg-primary/20 w-10 h-10 flex items-center justify-center mb-2 text-primary font-bold">
-                1
-              </div>
-              <div className="rounded-lg bg-muted/50 p-2 mb-4">
-                <PenLine className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">Write</h3>
-              <p className="text-muted-foreground text-sm mb-2">
-                Describe what type of Voice AI assistant you want
-              </p>
-              <div className="text-primary mt-auto">
-                {expandedCards.step1 ? (
-                  <ChevronUp className="h-4 w-4" />
-                ) : (
-                  <ChevronDown className="h-4 w-4" />
-                )}
-              </div>
-            </Card>
-
-            {/* Step 2: Test */}
-            <Card
-              className="rounded-xl border bg-card/80 p-6 hover:bg-card/60 flex flex-col items-center text-center cursor-pointer shadow-md hover:border-primary/70"
-              onClick={() => toggleCard('step2')}
-            >
-              <div className="rounded-full bg-primary/20 w-10 h-10 flex items-center justify-center mb-2 text-primary font-bold">
-                2
-              </div>
-              <div className="rounded-lg bg-muted/50 p-2 mb-4">
-                <FlaskConical className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">Test</h3>
-              <p className="text-muted-foreground text-sm mb-2">
-                Try out your assistant and see how it performs
-              </p>
-              <div className="text-primary mt-auto">
-                {expandedCards.step2 ? (
-                  <ChevronUp className="h-4 w-4" />
-                ) : (
-                  <ChevronDown className="h-4 w-4" />
-                )}
-              </div>
-            </Card>
-
-            {/* Step 3: Add Functionalities */}
-            <Card
-              className="rounded-xl border bg-card/80 p-6 hover:bg-card/60 flex flex-col items-center text-center cursor-pointer shadow-md hover:border-primary/70"
-              onClick={() => toggleCard('step3')}
-            >
-              <div className="rounded-full bg-primary/20 w-10 h-10 flex items-center justify-center mb-2 text-primary font-bold">
-                3
-              </div>
-              <div className="rounded-lg bg-muted/50 p-2 mb-4">
-                <Puzzle className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">
-                Add Functionalities
-              </h3>
-              <p className="text-muted-foreground text-sm mb-2">
-                Enhance through chat and drag-and-drop
-              </p>
-              <div className="text-primary mt-auto">
-                {expandedCards.step3 ? (
-                  <ChevronUp className="h-4 w-4" />
-                ) : (
-                  <ChevronDown className="h-4 w-4" />
-                )}
-              </div>
-            </Card>
-
-            {/* Step 4: Deploy */}
-            <Card
-              className="rounded-xl border bg-card/80 p-6 hover:bg-card/60 flex flex-col items-center text-center cursor-pointer shadow-md hover:border-primary/70"
-              onClick={() => toggleCard('step4')}
-            >
-              <div className="rounded-full bg-primary/20 w-10 h-10 flex items-center justify-center mb-2 text-primary font-bold">
-                4
-              </div>
-              <div className="rounded-lg bg-muted/50 p-2 mb-4">
-                <Rocket className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">Deploy</h3>
-              <p className="text-muted-foreground text-sm mb-2">
-                Make your assistant available to your users
-              </p>
-              <div className="text-primary mt-auto">
-                {expandedCards.step4 ? (
-                  <ChevronUp className="h-4 w-4" />
-                ) : (
-                  <ChevronDown className="h-4 w-4" />
-                )}
-              </div>
-            </Card>
-
-            {/* Step 5: Observe & Monitor */}
-            <Card
-              className="rounded-xl border bg-card/80 p-6 hover:bg-card/60 flex flex-col items-center text-center cursor-pointer shadow-md hover:border-primary/70"
-              onClick={() => toggleCard('step5')}
-            >
-              <div className="rounded-full bg-primary/20 w-10 h-10 flex items-center justify-center mb-2 text-primary font-bold">
-                5
-              </div>
-              <div className="rounded-lg bg-muted/50 p-2 mb-4">
-                <ChartLine className="h-6 w-6 text-primary" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">
-                Observe & Monitor
-              </h3>
-              <p className="text-muted-foreground text-sm mb-2">
-                Track performance and make improvements
-              </p>
-              <div className="text-primary mt-auto">
-                {expandedCards.step5 ? (
-                  <ChevronUp className="h-4 w-4" />
-                ) : (
-                  <ChevronDown className="h-4 w-4" />
-                )}
-              </div>
-            </Card>
-          </div>
-
-          {/* Expanded Content Area - appears below cards when any step is clicked */}
-          {expandedCards.step1 && (
-            <div className="mt-8">
-              <div className="bg-card/50 border border-primary/30 rounded-xl p-6">
-                <h3 className="text-2xl font-bold text-foreground mb-2">
-                  Create Voice AI Assistants with Natural Language
+          {/* Desktop Layout - All cards in one row, expanded content at bottom */}
+          <div className="hidden md:block">
+            <div className="grid grid-cols-5 gap-4">
+              {/* Step 1: Write */}
+              <Card
+                className="rounded-xl border bg-card/80 p-6 hover:bg-card/60 flex flex-col items-center text-center cursor-pointer shadow-md hover:border-primary/70"
+                onClick={() => toggleCard('step1')}
+              >
+                <div className="rounded-full bg-primary/20 w-10 h-10 flex items-center justify-center mb-2 text-primary font-bold">
+                  1
+                </div>
+                <div className="rounded-lg bg-muted/50 p-2 mb-4">
+                  <PenLine className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-2">
+                  Write
                 </h3>
-                <p className="text-muted-foreground mb-6">
-                  Simply describe what you want your Voice AI assistant to do,
-                  and we'll build it for you.
+                <p className="text-muted-foreground text-sm mb-2">
+                  Describe what type of Voice AI assistant you want
                 </p>
+                <div className="text-primary mt-auto">
+                  {expandedCards.step1 ? (
+                    <ChevronUp className="h-4 w-4" />
+                  ) : (
+                    <ChevronDown className="h-4 w-4" />
+                  )}
+                </div>
+              </Card>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <Card className="p-6 bg-card/80 border border-border/50 rounded-xl">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <MessageCircle className="h-6 w-6 text-primary" />
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-lg mb-2">
+              {/* Step 2: Test */}
+              <Card
+                className="rounded-xl border bg-card/80 p-6 hover:bg-card/60 flex flex-col items-center text-center cursor-pointer shadow-md hover:border-primary/70"
+                onClick={() => toggleCard('step2')}
+              >
+                <div className="rounded-full bg-primary/20 w-10 h-10 flex items-center justify-center mb-2 text-primary font-bold">
+                  2
+                </div>
+                <div className="rounded-lg bg-muted/50 p-2 mb-4">
+                  <FlaskConical className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-2">Test</h3>
+                <p className="text-muted-foreground text-sm mb-2">
+                  Try out your assistant and see how it performs
+                </p>
+                <div className="text-primary mt-auto">
+                  {expandedCards.step2 ? (
+                    <ChevronUp className="h-4 w-4" />
+                  ) : (
+                    <ChevronDown className="h-4 w-4" />
+                  )}
+                </div>
+              </Card>
+
+              {/* Step 3: Add Functionalities */}
+              <Card
+                className="rounded-xl border bg-card/80 p-6 hover:bg-card/60 flex flex-col items-center text-center cursor-pointer shadow-md hover:border-primary/70"
+                onClick={() => toggleCard('step3')}
+              >
+                <div className="rounded-full bg-primary/20 w-10 h-10 flex items-center justify-center mb-2 text-primary font-bold">
+                  3
+                </div>
+                <div className="rounded-lg bg-muted/50 p-2 mb-4">
+                  <Puzzle className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-2">
+                  Add Functionalities
+                </h3>
+                <p className="text-muted-foreground text-sm mb-2">
+                  Enhance through chat and drag-and-drop
+                </p>
+                <div className="text-primary mt-auto">
+                  {expandedCards.step3 ? (
+                    <ChevronUp className="h-4 w-4" />
+                  ) : (
+                    <ChevronDown className="h-4 w-4" />
+                  )}
+                </div>
+              </Card>
+
+              {/* Step 4: Deploy */}
+              <Card
+                className="rounded-xl border bg-card/80 p-6 hover:bg-card/60 flex flex-col items-center text-center cursor-pointer shadow-md hover:border-primary/70"
+                onClick={() => toggleCard('step4')}
+              >
+                <div className="rounded-full bg-primary/20 w-10 h-10 flex items-center justify-center mb-2 text-primary font-bold">
+                  4
+                </div>
+                <div className="rounded-lg bg-muted/50 p-2 mb-4">
+                  <Rocket className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-2">
+                  Deploy
+                </h3>
+                <p className="text-muted-foreground text-sm mb-2">
+                  Make your assistant available to your users
+                </p>
+                <div className="text-primary mt-auto">
+                  {expandedCards.step4 ? (
+                    <ChevronUp className="h-4 w-4" />
+                  ) : (
+                    <ChevronDown className="h-4 w-4" />
+                  )}
+                </div>
+              </Card>
+
+              {/* Step 5: Observe & Monitor */}
+              <Card
+                className="rounded-xl border bg-card/80 p-6 hover:bg-card/60 flex flex-col items-center text-center cursor-pointer shadow-md hover:border-primary/70"
+                onClick={() => toggleCard('step5')}
+              >
+                <div className="rounded-full bg-primary/20 w-10 h-10 flex items-center justify-center mb-2 text-primary font-bold">
+                  5
+                </div>
+                <div className="rounded-lg bg-muted/50 p-2 mb-4">
+                  <ChartLine className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-2">
+                  Observe & Monitor
+                </h3>
+                <p className="text-muted-foreground text-sm mb-2">
+                  Track performance and make improvements
+                </p>
+                <div className="text-primary mt-auto">
+                  {expandedCards.step5 ? (
+                    <ChevronUp className="h-4 w-4" />
+                  ) : (
+                    <ChevronDown className="h-4 w-4" />
+                  )}
+                </div>
+              </Card>
+            </div>
+
+            {/* Desktop Expanded Content - Fixed Layout */}
+            {expandedCards.step1 && (
+              <div className="mt-8">
+                <div className="bg-card/50 border border-primary/30 rounded-xl p-6">
+                  <div className="text-left mb-8">
+                    <h3 className="text-2xl font-bold text-foreground mb-3">
+                      Create Voice AI Assistants with Natural Language
+                    </h3>
+                    <p className="text-muted-foreground text-lg max-w-4xl ">
+                      Simply describe what you want your Voice AI assistant to
+                      do, and we'll build it for you.
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-6">
+                    <Card className="p-6 bg-card/80 border border-border/50 rounded-xl">
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                          <MessageCircle className="h-6 w-6 text-primary" />
+                        </div>
+                        <h4 className="font-semibold text-lg">
                           Conversational Creation
                         </h4>
-                        <p className="text-muted-foreground text-sm">
+                      </div>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        Build your assistant through natural conversation – just
+                        chat with our platform about what you need.
+                      </p>
+                    </Card>
+
+                    <Card className="p-6 bg-card/80 border border-border/50 rounded-xl">
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                          <MousePointer className="h-6 w-6 text-primary" />
+                        </div>
+                        <h4 className="font-semibold text-lg">
+                          Drag-and-Drop Interface
+                        </h4>
+                      </div>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        Fine‑tune your assistant's capabilities with our
+                        intuitive drag‑and‑drop editor.
+                      </p>
+                    </Card>
+
+                    <Card className="p-6 bg-card/80 border border-border/50 rounded-xl">
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                          <Layers className="h-6 w-6 text-primary" />
+                        </div>
+                        <h4 className="font-semibold text-lg">
+                          Pre‑built Templates
+                        </h4>
+                      </div>
+                      <p className="text-muted-foreground text-sm leading-relaxed">
+                        Start with industry‑specific templates and customize to
+                        your needs.
+                      </p>
+                    </Card>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {expandedCards.step2 && (
+              <div className="mt-8">
+                <div className="bg-card/50 border border-primary/30 rounded-xl p-6">
+                  <div className="text-left mb-8">
+                    <h3 className="text-2xl font-bold text-foreground mb-3">
+                      Test Your Assistant in Real Scenarios
+                    </h3>
+                    <p className="text-muted-foreground text-lg max-w-4xl ">
+                      Ensure your Voice AI assistant performs perfectly before
+                      deployment.
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-6">
+                    <Card className="p-6 border border-border/50">
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                          <MessageCircle className="h-6 w-6 text-primary" />
+                        </div>
+                        <h5 className="font-semibold text-lg">
+                          Test by chatting with the assistant
+                        </h5>
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Interact directly to see how it handles conversations in
+                        real-time.
+                      </p>
+                    </Card>
+
+                    <Card className="p-6 border border-border/50">
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                          <Users className="h-6 w-6 text-primary" />
+                        </div>
+                        <h5 className="font-semibold text-lg">
+                          Simulate 1000+ scenarios
+                        </h5>
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Automatically test against thousands of potential user
+                        interactions.
+                      </p>
+                    </Card>
+
+                    <Card className="p-6 border border-border/50">
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                          <ChartLine className="h-6 w-6 text-primary" />
+                        </div>
+                        <h5 className="font-semibold text-lg">
+                          Evaluate performance
+                        </h5>
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Measure accuracy, response time, and user satisfaction.
+                      </p>
+                    </Card>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {expandedCards.step3 && (
+              <div className="mt-8">
+                <div className="bg-card/50 border border-primary/30 rounded-xl p-6">
+                  <div className="text-left mb-8">
+                    <h3 className="text-2xl font-bold text-foreground mb-3">
+                      Extend Your Agent's Capabilities
+                    </h3>
+                    <p className="text-muted-foreground text-lg max-w-4xl ">
+                      Add powerful features to make your Voice AI assistant even
+                      more capable.
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-4 gap-6">
+                    <Card className="p-6 border border-border/50">
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                          <Layers className="h-6 w-6 text-primary" />
+                        </div>
+                        <h5 className="font-semibold text-lg">
+                          Enhance via node library
+                        </h5>
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Add pre‑built capabilities from our extensive library.
+                      </p>
+                    </Card>
+
+                    <Card className="p-6 border border-border/50">
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                          <MessageSquareText className="h-6 w-6 text-primary" />
+                        </div>
+                        <h5 className="font-semibold text-lg">
+                          Add Knowledgebase
+                        </h5>
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Connect documentation, FAQs, and other sources.
+                      </p>
+                    </Card>
+
+                    <Card className="p-6 border border-border/50">
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                          <Puzzle className="h-6 w-6 text-primary" />
+                        </div>
+                        <h5 className="font-semibold text-lg">
+                          Integration marketplace
+                        </h5>
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Connect to CRMs, calendars, and business tools.
+                      </p>
+                    </Card>
+
+                    <Card className="p-6 border border-border/50">
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                          <Workflow className="h-6 w-6 text-primary" />
+                        </div>
+                        <h5 className="font-semibold text-lg">
+                          Tooling through API calls
+                        </h5>
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Extend capabilities by connecting to external APIs.
+                      </p>
+                    </Card>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {expandedCards.step4 && (
+              <div className="mt-8">
+                <div className="bg-card/50 border border-primary/30 rounded-xl p-6">
+                  <div className="text-left mb-8">
+                    <h3 className="text-2xl font-bold text-foreground mb-3">
+                      Go Live with One Click
+                    </h3>
+                    <p className="text-muted-foreground text-lg max-w-4xl">
+                      Deploy to production environments instantly.
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-6">
+                    <Card className="p-6 border border-border/50">
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                          <Rocket className="h-6 w-6 text-primary" />
+                        </div>
+                        <h5 className="font-semibold text-lg">
+                          Instant Deployment
+                        </h5>
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Push live with a single click — no technical setup.
+                      </p>
+                    </Card>
+
+                    <Card className="p-6 border border-border/50">
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                          <Phone className="h-6 w-6 text-primary" />
+                        </div>
+                        <h5 className="font-semibold text-lg">
+                          Purchase phone numbers
+                        </h5>
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Get dedicated numbers in multiple regions.
+                      </p>
+                    </Card>
+
+                    <Card className="p-6 border border-border/50">
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                          <Workflow className="h-6 w-6 text-primary" />
+                        </div>
+                        <h5 className="font-semibold text-lg">
+                          Scalable Infrastructure
+                        </h5>
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Handle thousands of simultaneous conversations.
+                      </p>
+                    </Card>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {expandedCards.step5 && (
+              <div className="mt-8">
+                <div className="bg-card/50 border border-primary/30 rounded-xl p-6">
+                  <div className="text-left mb-8">
+                    <h3 className="text-2xl font-bold text-foreground mb-3">
+                      Gain Insights and Continuously Improve
+                    </h3>
+                    <p className="text-muted-foreground text-lg max-w-4xl">
+                      Monitor performance and optimize based on real data.
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-6">
+                    <Card className="p-6 border border-border/50">
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                          <ChartLine className="h-6 w-6 text-primary" />
+                        </div>
+                        <h5 className="font-semibold text-lg">
+                          Analytics Dashboard
+                        </h5>
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Track call volume, resolution rate, and satisfaction.
+                      </p>
+                    </Card>
+
+                    <Card className="p-6 border border-border/50">
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                          <FileText className="h-6 w-6 text-primary" />
+                        </div>
+                        <h5 className="font-semibold text-lg">
+                          Logs and Traces
+                        </h5>
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Get span-level visibility of real-time performance.
+                      </p>
+                    </Card>
+
+                    <Card className="p-6 border border-border/50">
+                      <div className="flex items-center gap-4 mb-3">
+                        <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                          <Star className="h-6 w-6 text-primary" />
+                        </div>
+                        <h5 className="font-semibold text-lg">
+                          Conversation Quality Scores
+                        </h5>
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        Define custom metrics to evaluate and improve quality.
+                      </p>
+                    </Card>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Mobile Layout - Cards stacked vertically with expanded content below each */}
+          <div className="block md:hidden space-y-4">
+            {/* Step 1: Write */}
+            <div>
+              <Card
+                className="rounded-xl border bg-card/80 p-6 hover:bg-card/60 flex flex-col items-center text-center cursor-pointer shadow-md hover:border-primary/70"
+                onClick={() => toggleCard('step1')}
+              >
+                <div className="rounded-full bg-primary/20 w-10 h-10 flex items-center justify-center mb-2 text-primary font-bold">
+                  1
+                </div>
+                <div className="rounded-lg bg-muted/50 p-2 mb-4">
+                  <PenLine className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-2">
+                  Write
+                </h3>
+                <p className="text-muted-foreground text-sm mb-2">
+                  Describe what type of Voice AI assistant you want
+                </p>
+                <div className="text-primary mt-auto">
+                  {expandedCards.step1 ? (
+                    <ChevronUp className="h-4 w-4" />
+                  ) : (
+                    <ChevronDown className="h-4 w-4" />
+                  )}
+                </div>
+              </Card>
+
+              {/* Step 1 Expanded Content - Mobile */}
+              {expandedCards.step1 && (
+                <div className="mt-4">
+                  <div className="bg-card/50 border border-primary/30 rounded-xl p-4">
+                    <div className="text-left mb-6">
+                      <h3 className="text-xl font-bold text-foreground mb-2">
+                        Create Voice AI Assistants with Natural Language
+                      </h3>
+                      <p className="text-muted-foreground text-sm">
+                        Simply describe what you want your Voice AI assistant to
+                        do, and we'll build it for you.
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-4">
+                      <Card className="p-4 bg-card/80 border border-border/50 rounded-xl">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                            <MessageCircle className="h-5 w-5 text-primary" />
+                          </div>
+                          <h4 className="font-semibold text-base">
+                            Conversational Creation
+                          </h4>
+                        </div>
+                        <p className="text-muted-foreground text-xs leading-relaxed">
                           Build your assistant through natural conversation –
                           just chat with our platform about what you need.
                         </p>
-                      </div>
-                    </div>
-                  </Card>
+                      </Card>
 
-                  <Card className="p-6 bg-card/80 border border-border/50 rounded-xl">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <MousePointer className="h-6 w-6 text-primary" />
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-lg mb-2">
-                          Drag-and-Drop Interface
-                        </h4>
-                        <p className="text-muted-foreground text-sm">
+                      <Card className="p-4 bg-card/80 border border-border/50 rounded-xl">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                            <MousePointer className="h-5 w-5 text-primary" />
+                          </div>
+                          <h4 className="font-semibold text-base">
+                            Drag-and-Drop Interface
+                          </h4>
+                        </div>
+                        <p className="text-muted-foreground text-xs leading-relaxed">
                           Fine‑tune your assistant's capabilities with our
                           intuitive drag‑and‑drop editor.
                         </p>
-                      </div>
-                    </div>
-                  </Card>
+                      </Card>
 
-                  <Card className="p-6 bg-card/80 border border-border/50 rounded-xl">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <Layers className="h-6 w-6 text-primary" />
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="font-semibold text-lg mb-2">
-                          Pre‑built Templates
-                        </h4>
-                        <p className="text-muted-foreground text-sm">
+                      <Card className="p-4 bg-card/80 border border-border/50 rounded-xl">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                            <Layers className="h-5 w-5 text-primary" />
+                          </div>
+                          <h4 className="font-semibold text-base">
+                            Pre‑built Templates
+                          </h4>
+                        </div>
+                        <p className="text-muted-foreground text-xs leading-relaxed">
                           Start with industry‑specific templates and customize
                           to your needs.
                         </p>
-                      </div>
+                      </Card>
                     </div>
-                  </Card>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
-          )}
 
-          {expandedCards.step2 && (
-            <div className="mt-8">
-              <div className="bg-card/50 border border-primary/30 rounded-xl p-6">
-                <h3 className="text-2xl font-bold text-foreground mb-2">
-                  Test Your Assistant in Real Scenarios
-                </h3>
-                <p className="text-muted-foreground mb-6">
-                  Ensure your Voice AI assistant performs perfectly before
-                  deployment.
+            {/* Step 2: Test */}
+            <div>
+              <Card
+                className="rounded-xl border bg-card/80 p-6 hover:bg-card/60 flex flex-col items-center text-center cursor-pointer shadow-md hover:border-primary/70"
+                onClick={() => toggleCard('step2')}
+              >
+                <div className="rounded-full bg-primary/20 w-10 h-10 flex items-center justify-center mb-2 text-primary font-bold">
+                  2
+                </div>
+                <div className="rounded-lg bg-muted/50 p-2 mb-4">
+                  <FlaskConical className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-2">Test</h3>
+                <p className="text-muted-foreground text-sm mb-2">
+                  Try out your assistant and see how it performs
                 </p>
+                <div className="text-primary mt-auto">
+                  {expandedCards.step2 ? (
+                    <ChevronUp className="h-4 w-4" />
+                  ) : (
+                    <ChevronDown className="h-4 w-4" />
+                  )}
+                </div>
+              </Card>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <Card className="p-6 border border-border/50">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <MessageCircle className="h-6 w-6 text-primary" />
-                      </div>
-                      <div className="flex-1">
-                        <h5 className="font-semibold mb-2">
-                          Test by chatting with the assistant
-                        </h5>
-                        <p className="text-sm text-muted-foreground">
+              {/* Step 2 Expanded Content - Mobile */}
+              {expandedCards.step2 && (
+                <div className="mt-4">
+                  <div className="bg-card/50 border border-primary/30 rounded-xl p-4">
+                    <div className="text-left mb-6">
+                      <h3 className="text-xl font-bold text-foreground mb-2">
+                        Test Your Assistant in Real Scenarios
+                      </h3>
+                      <p className="text-muted-foreground text-sm">
+                        Ensure your Voice AI assistant performs perfectly before
+                        deployment.
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-4">
+                      <Card className="p-4 border border-border/50">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                            <MessageCircle className="h-5 w-5 text-primary" />
+                          </div>
+                          <h5 className="font-semibold text-sm">
+                            Test by chatting with the assistant
+                          </h5>
+                        </div>
+                        <p className="text-xs text-muted-foreground leading-relaxed">
                           Interact directly to see how it handles conversations
                           in real-time.
                         </p>
-                      </div>
-                    </div>
-                  </Card>
+                      </Card>
 
-                  <Card className="p-6 border border-border/50">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <Users className="h-6 w-6 text-primary" />
-                      </div>
-                      <div className="flex-1">
-                        <h5 className="font-semibold mb-2">
-                          Simulate 1000+ scenarios
-                        </h5>
-                        <p className="text-sm text-muted-foreground">
+                      <Card className="p-4 border border-border/50">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                            <Users className="h-5 w-5 text-primary" />
+                          </div>
+                          <h5 className="font-semibold text-sm">
+                            Simulate 1000+ scenarios
+                          </h5>
+                        </div>
+                        <p className="text-xs text-muted-foreground leading-relaxed">
                           Automatically test against thousands of potential user
                           interactions.
                         </p>
-                      </div>
-                    </div>
-                  </Card>
+                      </Card>
 
-                  <Card className="p-6 border border-border/50">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <ChartLine className="h-6 w-6 text-primary" />
-                      </div>
-                      <div className="flex-1">
-                        <h5 className="font-semibold mb-2">
-                          Evaluate performance
-                        </h5>
-                        <p className="text-sm text-muted-foreground">
+                      <Card className="p-4 border border-border/50">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                            <ChartLine className="h-5 w-5 text-primary" />
+                          </div>
+                          <h5 className="font-semibold text-sm">
+                            Evaluate performance
+                          </h5>
+                        </div>
+                        <p className="text-xs text-muted-foreground leading-relaxed">
                           Measure accuracy, response time, and user
                           satisfaction.
                         </p>
-                      </div>
+                      </Card>
                     </div>
-                  </Card>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
-          )}
 
-          {expandedCards.step3 && (
-            <div className="mt-8">
-              <div className="bg-card/50 border border-primary/30 rounded-xl p-6">
-                <h3 className="text-2xl font-bold text-foreground mb-2">
-                  Extend Your Agent's Capabilities
+            {/* Step 3: Add Functionalities */}
+            <div>
+              <Card
+                className="rounded-xl border bg-card/80 p-6 hover:bg-card/60 flex flex-col items-center text-center cursor-pointer shadow-md hover:border-primary/70"
+                onClick={() => toggleCard('step3')}
+              >
+                <div className="rounded-full bg-primary/20 w-10 h-10 flex items-center justify-center mb-2 text-primary font-bold">
+                  3
+                </div>
+                <div className="rounded-lg bg-muted/50 p-2 mb-4">
+                  <Puzzle className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-2">
+                  Add Functionalities
                 </h3>
-                <p className="text-muted-foreground mb-6">
-                  Add powerful features to make your Voice AI assistant even
-                  more capable.
+                <p className="text-muted-foreground text-sm mb-2">
+                  Enhance through chat and drag-and-drop
                 </p>
+                <div className="text-primary mt-auto">
+                  {expandedCards.step3 ? (
+                    <ChevronUp className="h-4 w-4" />
+                  ) : (
+                    <ChevronDown className="h-4 w-4" />
+                  )}
+                </div>
+              </Card>
 
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                  <Card className="p-6 border border-border/50">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <Layers className="h-6 w-6 text-primary" />
-                      </div>
-                      <div className="flex-1">
-                        <h5 className="font-semibold mb-2">
-                          Enhance via node library
-                        </h5>
-                        <p className="text-sm text-muted-foreground">
+              {/* Step 3 Expanded Content - Mobile */}
+              {expandedCards.step3 && (
+                <div className="mt-4">
+                  <div className="bg-card/50 border border-primary/30 rounded-xl p-4">
+                    <div className="text-left mb-6">
+                      <h3 className="text-xl font-bold text-foreground mb-2">
+                        Extend Your Agent's Capabilities
+                      </h3>
+                      <p className="text-muted-foreground text-sm">
+                        Add powerful features to make your Voice AI assistant
+                        even more capable.
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-4">
+                      <Card className="p-4 border border-border/50">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                            <Layers className="h-5 w-5 text-primary" />
+                          </div>
+                          <h5 className="font-semibold text-sm">
+                            Enhance via node library
+                          </h5>
+                        </div>
+                        <p className="text-xs text-muted-foreground leading-relaxed">
                           Add pre‑built capabilities from our extensive library.
                         </p>
-                      </div>
-                    </div>
-                  </Card>
+                      </Card>
 
-                  <Card className="p-6 border border-border/50">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <MessageSquareText className="h-6 w-6 text-primary" />
-                      </div>
-                      <div className="flex-1">
-                        <h5 className="font-semibold mb-2">
-                          Add Knowledgebase
-                        </h5>
-                        <p className="text-sm text-muted-foreground">
+                      <Card className="p-4 border border-border/50">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                            <MessageSquareText className="h-5 w-5 text-primary" />
+                          </div>
+                          <h5 className="font-semibold text-sm">
+                            Add Knowledgebase
+                          </h5>
+                        </div>
+                        <p className="text-xs text-muted-foreground leading-relaxed">
                           Connect documentation, FAQs, and other sources.
                         </p>
-                      </div>
-                    </div>
-                  </Card>
+                      </Card>
 
-                  <Card className="p-6 border border-border/50">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <Puzzle className="h-6 w-6 text-primary" />
-                      </div>
-                      <div className="flex-1">
-                        <h5 className="font-semibold mb-2">
-                          Integration marketplace
-                        </h5>
-                        <p className="text-sm text-muted-foreground">
+                      <Card className="p-4 border border-border/50">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                            <Puzzle className="h-5 w-5 text-primary" />
+                          </div>
+                          <h5 className="font-semibold text-sm">
+                            Integration marketplace
+                          </h5>
+                        </div>
+                        <p className="text-xs text-muted-foreground leading-relaxed">
                           Connect to CRMs, calendars, and business tools.
                         </p>
-                      </div>
-                    </div>
-                  </Card>
+                      </Card>
 
-                  <Card className="p-6 border border-border/50">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <Workflow className="h-6 w-6 text-primary" />
-                      </div>
-                      <div className="flex-1">
-                        <h5 className="font-semibold mb-2">
-                          Tooling through API calls
-                        </h5>
-                        <p className="text-sm text-muted-foreground">
+                      <Card className="p-4 border border-border/50">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                            <Workflow className="h-5 w-5 text-primary" />
+                          </div>
+                          <h5 className="font-semibold text-sm">
+                            Tooling through API calls
+                          </h5>
+                        </div>
+                        <p className="text-xs text-muted-foreground leading-relaxed">
                           Extend capabilities by connecting to external APIs.
                         </p>
-                      </div>
+                      </Card>
                     </div>
-                  </Card>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
-          )}
 
-          {expandedCards.step4 && (
-            <div className="mt-8">
-              <div className="bg-card/50 border border-primary/30 rounded-xl p-6">
-                <h3 className="text-2xl font-bold text-foreground mb-2">
-                  Go Live with One Click
+            {/* Step 4: Deploy */}
+            <div>
+              <Card
+                className="rounded-xl border bg-card/80 p-6 hover:bg-card/60 flex flex-col items-center text-center cursor-pointer shadow-md hover:border-primary/70"
+                onClick={() => toggleCard('step4')}
+              >
+                <div className="rounded-full bg-primary/20 w-10 h-10 flex items-center justify-center mb-2 text-primary font-bold">
+                  4
+                </div>
+                <div className="rounded-lg bg-muted/50 p-2 mb-4">
+                  <Rocket className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-2">
+                  Deploy
                 </h3>
-                <p className="text-muted-foreground mb-6">
-                  Deploy to production environments instantly.
+                <p className="text-muted-foreground text-sm mb-2">
+                  Make your assistant available to your users
                 </p>
+                <div className="text-primary mt-auto">
+                  {expandedCards.step4 ? (
+                    <ChevronUp className="h-4 w-4" />
+                  ) : (
+                    <ChevronDown className="h-4 w-4" />
+                  )}
+                </div>
+              </Card>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <Card className="p-6 border border-border/50">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <Rocket className="h-6 w-6 text-primary" />
-                      </div>
-                      <div className="flex-1">
-                        <h5 className="font-semibold mb-2">
-                          Instant Deployment
-                        </h5>
-                        <p className="text-sm text-muted-foreground">
+              {/* Step 4 Expanded Content - Mobile */}
+              {expandedCards.step4 && (
+                <div className="mt-4">
+                  <div className="bg-card/50 border border-primary/30 rounded-xl p-4">
+                    <div className="text-left mb-6">
+                      <h3 className="text-xl font-bold text-foreground mb-2">
+                        Go Live with One Click
+                      </h3>
+                      <p className="text-muted-foreground text-sm">
+                        Deploy to production environments instantly.
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-4">
+                      <Card className="p-4 border border-border/50">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                            <Rocket className="h-5 w-5 text-primary" />
+                          </div>
+                          <h5 className="font-semibold text-sm">
+                            Instant Deployment
+                          </h5>
+                        </div>
+                        <p className="text-xs text-muted-foreground leading-relaxed">
                           Push live with a single click — no technical setup.
                         </p>
-                      </div>
-                    </div>
-                  </Card>
+                      </Card>
 
-                  <Card className="p-6 border border-border/50">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <Phone className="h-6 w-6 text-primary" />
-                      </div>
-                      <div className="flex-1">
-                        <h5 className="font-semibold mb-2">
-                          Purchase phone numbers
-                        </h5>
-                        <p className="text-sm text-muted-foreground">
+                      <Card className="p-4 border border-border/50">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                            <Phone className="h-5 w-5 text-primary" />
+                          </div>
+                          <h5 className="font-semibold text-sm">
+                            Purchase phone numbers
+                          </h5>
+                        </div>
+                        <p className="text-xs text-muted-foreground leading-relaxed">
                           Get dedicated numbers in multiple regions.
                         </p>
-                      </div>
-                    </div>
-                  </Card>
+                      </Card>
 
-                  <Card className="p-6 border border-border/50">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <Workflow className="h-6 w-6 text-primary" />
-                      </div>
-                      <div className="flex-1">
-                        <h5 className="font-semibold mb-2">
-                          Scalable Infrastructure
-                        </h5>
-                        <p className="text-sm text-muted-foreground">
+                      <Card className="p-4 border border-border/50">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                            <Workflow className="h-5 w-5 text-primary" />
+                          </div>
+                          <h5 className="font-semibold text-sm">
+                            Scalable Infrastructure
+                          </h5>
+                        </div>
+                        <p className="text-xs text-muted-foreground leading-relaxed">
                           Handle thousands of simultaneous conversations.
                         </p>
-                      </div>
+                      </Card>
                     </div>
-                  </Card>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
-          )}
 
-          {expandedCards.step5 && (
-            <div className="mt-8">
-              <div className="bg-card/50 border border-primary/30 rounded-xl p-6">
-                <h3 className="text-2xl font-bold text-foreground mb-2">
-                  Gain Insights and Continuously Improve
+            {/* Step 5: Observe & Monitor */}
+            <div>
+              <Card
+                className="rounded-xl border bg-card/80 p-6 hover:bg-card/60 flex flex-col items-center text-center cursor-pointer shadow-md hover:border-primary/70"
+                onClick={() => toggleCard('step5')}
+              >
+                <div className="rounded-full bg-primary/20 w-10 h-10 flex items-center justify-center mb-2 text-primary font-bold">
+                  5
+                </div>
+                <div className="rounded-lg bg-muted/50 p-2 mb-4">
+                  <ChartLine className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-2">
+                  Observe & Monitor
                 </h3>
-                <p className="text-muted-foreground mb-6">
-                  Monitor performance and optimize based on real data.
+                <p className="text-muted-foreground text-sm mb-2">
+                  Track performance and make improvements
                 </p>
+                <div className="text-primary mt-auto">
+                  {expandedCards.step5 ? (
+                    <ChevronUp className="h-4 w-4" />
+                  ) : (
+                    <ChevronDown className="h-4 w-4" />
+                  )}
+                </div>
+              </Card>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <Card className="p-6 border border-border/50">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <ChartLine className="h-6 w-6 text-primary" />
-                      </div>
-                      <div className="flex-1">
-                        <h5 className="font-semibold mb-2">
-                          Analytics Dashboard
-                        </h5>
-                        <p className="text-sm text-muted-foreground">
+              {/* Step 5 Expanded Content - Mobile */}
+              {expandedCards.step5 && (
+                <div className="mt-4">
+                  <div className="bg-card/50 border border-primary/30 rounded-xl p-4">
+                    <div className="text-left mb-6">
+                      <h3 className="text-xl font-bold text-foreground mb-2">
+                        Gain Insights and Continuously Improve
+                      </h3>
+                      <p className="text-muted-foreground text-sm">
+                        Monitor performance and optimize based on real data.
+                      </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-4">
+                      <Card className="p-4 border border-border/50">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                            <ChartLine className="h-5 w-5 text-primary" />
+                          </div>
+                          <h5 className="font-semibold text-sm">
+                            Analytics Dashboard
+                          </h5>
+                        </div>
+                        <p className="text-xs text-muted-foreground leading-relaxed">
                           Track call volume, resolution rate, and satisfaction.
                         </p>
-                      </div>
-                    </div>
-                  </Card>
+                      </Card>
 
-                  <Card className="p-6 border border-border/50">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <FileText className="h-6 w-6 text-primary" />
-                      </div>
-                      <div className="flex-1">
-                        <h5 className="font-semibold mb-2">Logs and Traces</h5>
-                        <p className="text-sm text-muted-foreground">
+                      <Card className="p-4 border border-border/50">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                            <FileText className="h-5 w-5 text-primary" />
+                          </div>
+                          <h5 className="font-semibold text-sm">
+                            Logs and Traces
+                          </h5>
+                        </div>
+                        <p className="text-xs text-muted-foreground leading-relaxed">
                           Get span-level visibility of real-time performance.
                         </p>
-                      </div>
-                    </div>
-                  </Card>
+                      </Card>
 
-                  <Card className="p-6 border border-border/50">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <Star className="h-6 w-6 text-primary" />
-                      </div>
-                      <div className="flex-1">
-                        <h5 className="font-semibold mb-2">
-                          Conversation Quality Scores
-                        </h5>
-                        <p className="text-sm text-muted-foreground">
+                      <Card className="p-4 border border-border/50">
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="flex-shrink-0 w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
+                            <Star className="h-5 w-5 text-primary" />
+                          </div>
+                          <h5 className="font-semibold text-sm">
+                            Conversation Quality Scores
+                          </h5>
+                        </div>
+                        <p className="text-xs text-muted-foreground leading-relaxed">
                           Define custom metrics to evaluate and improve quality.
                         </p>
-                      </div>
+                      </Card>
                     </div>
-                  </Card>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
-          )}
+          </div>
         </Container>
       </section>
       {/* Key Features Section */}
