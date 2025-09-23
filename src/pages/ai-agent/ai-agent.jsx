@@ -42,6 +42,7 @@ import CounterOnView from './components/KeyFeatures/CounterOnView';
 import DemoCarousel from './components/KeyFeatures/DemoCarousel';
 import FeaturesCard from './components/KeyFeatures/FeaturesCard';
 import SectionHeader from './components/SectionHeader';
+import CallixAiImage from '/src/assets/ai-agent-images/CallixAi.png';
 
 const AiAgent = () => {
   const [prompt, setPrompt] = useState('');
@@ -814,17 +815,52 @@ const AiAgent = () => {
           </div>
         </Container>
       </section>
-      {/* Call to Action Section */}
-      <section className="py-8 sm:py-10 px-4 w-full">
+      {/* Integrations & Partners + Call to Action (final) */}
+      <section className="py-10 border-t border-border/30">
         <Container>
-          <div className="text-center">
+          {/* Header */}
+
+          <SectionHeader
+            badge="Integrations"
+            title="     Build with Callix AI"
+            highlightedText="Voice AI"
+            subtitle="Seamless integrations. Fast setup. Production‑ready reliability."
+          />
+
+          {/* Brand / Preview Image */}
+          <div className="group relative mx-auto max-w-5xl rounded-2xl overflow-hidden border border-border/50 bg-card/60 transition-shadow duration-300 hover:shadow-[0_0_35px_rgba(64,139,255,0.45)]">
+            {/* height reduced ~20% vs 16/9 → 16/7 */}
+            <div className="aspect-[16/6] w-full bg-background/50">
+              <img
+                src={CallixAiImage}
+                alt="Callix AI"
+                className="w-full h-full object-contain"
+                loading="lazy"
+              />
+            </div>
+          </div>
+
+          {/* Learn More button */}
+
+          <div className="flex justify-center mt-10 mb-24">
+            <Button
+              variant="outline"
+              className="group h-11 min-w-[320px] px-5 rounded-lg border-primary/30  hover:bg-primary/10 inline-flex items-center justify-center"
+            >
+              <span className="mr-2">Learn More About Integrations</span>
+              <ArrowRight className="h-4 w-4 transform transition-transform duration-400 ease-out group-hover:translate-x-1 group-hover:scale-110" />
+            </Button>
+          </div>
+          {/* Call to action buttons */}
+          <div className="text-center mt-2 mb-2">
             <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-              <Button className="bg-primary hover:bg-primary/90 w-full sm:w-auto">
+              <Button className="h-11 min-w-[220px] px-5 rounded-lg bg-primary hover:bg-primary/90 inline-flex items-center justify-center">
                 Get Started for Free
               </Button>
+
               <Button
                 variant="outline"
-                className="border-primary/20 hover:bg-primary/10 w-full sm:w-auto"
+                className="h-11 min-w-[220px] px-5 rounded-lg border-primary/20 hover:bg-primary/10 inline-flex items-center justify-center"
               >
                 Schedule a Demo
               </Button>

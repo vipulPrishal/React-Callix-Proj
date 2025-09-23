@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { BrowserRouter } from 'react-router-dom';
 import { LoadingBarContainer } from 'react-top-loading-bar';
 import { Toaster } from '@/components/ui/sonner';
+import CursorTrail from '@/components/effects/CursorTrail';
 import { AuthProvider } from './auth/providers/supabase-provider';
 import { I18nProvider } from './providers/i18n-provider';
 import { ModulesProvider } from './providers/modules-provider';
@@ -32,6 +33,12 @@ export function App() {
                         <ModulesProvider>
                           <AppRouting />
                         </ModulesProvider>
+                        {/* Cursor trail - add this line */}
+                        <CursorTrail
+                          dotSize={12} // bigger dots
+                          trailLength={8} // fewer, closer dots
+                          fadeMs={300} // faster fade
+                        />
                       </BrowserRouter>
                     </LoadingBarContainer>
                   </QueryProvider>
