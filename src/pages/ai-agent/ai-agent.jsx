@@ -223,7 +223,7 @@ const AiAgent = () => {
     });
   };
   return (
-    <div id="ai-agent-page  " className="flex flex-col gap-4 pt-5  border-2">
+    <div id="ai-agent-page  " className="flex flex-col gap-4 pt-5  ">
       {/* Hero + Prompt */}
       <div className="bg-background">
         <Container>
