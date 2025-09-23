@@ -38,8 +38,10 @@ import TemplateCard from './components/Hero/TemplateCard/TemplateCard';
 import ExpandedContentCard from './components/HowItWorks/ExpandedContentCard';
 import ExpandedContentWrapper from './components/HowItWorks/ExpandedContentWrapper';
 import StepCard from './components/HowItWorks/StepCard';
+import CounterOnView from './components/KeyFeatures/CounterOnView';
 import DemoCarousel from './components/KeyFeatures/DemoCarousel';
 import FeaturesCard from './components/KeyFeatures/FeaturesCard';
+import SectionHeader from './components/SectionHeader';
 
 const AiAgent = () => {
   const [prompt, setPrompt] = useState('');
@@ -375,21 +377,13 @@ const AiAgent = () => {
       </div>
       {/* Testimonial Section */}
       {/* How it Works Section */}
-      {/* How it Works Section */}
       <section className="py-10 border-t border-border/30">
         <Container>
-          <div className="text-center mb-12">
-            <div className="inline-block px-4 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-4">
-              Simple Process
-            </div>
-            <h2 className="md:text-3xl font-bold tracking-tight mb-6">
-              How it Works
-            </h2>
-            <p className="text-muted-foreground text-sm">
-              Create and deploy your Voice AI assistant in five simple steps
-            </p>
-          </div>
-
+          <SectionHeader
+            badge="Simple Process"
+            title="How it Works"
+            subtitle="Create and deploy your Voice AI assistant in five simple steps"
+          />
           {/* Desktop Layout - All cards in one row, expanded content at bottom */}
           <div className="hidden md:block">
             <div className="grid grid-cols-5 gap-4">
@@ -764,18 +758,11 @@ const AiAgent = () => {
       {/* Key Features Section */}
       <section className="py-10 border-t border-border/30">
         <Container>
-          <div className="text-center mb-12">
-            <div className="inline-block px-4 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-4">
-              Key Features
-            </div>
-            <h2 className="md:text-3xl font-bold tracking-tight mb-6">
-              Build high quality{' '}
-              <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 text-transparent bg-clip-text">
-                Voice AI
-              </span>{' '}
-              assistants in minutes
-            </h2>
-          </div>
+          <SectionHeader
+            badge="Key Features"
+            title="Build high quality Voice AI assistants in minutes"
+            highlightedText="Voice AI"
+          />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-16">
@@ -809,15 +796,16 @@ const AiAgent = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="flex flex-col items-center justify-center p-8 rounded-2xl bg-background/50 backdrop-blur-sm border border-primary/10 hover:border-primary/20 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
               <h3 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-primary/80 to-primary/60 text-transparent bg-clip-text mb-2">
-                150K+
+                <CounterOnView end={150000} duration={1600} suffix="K+" />
               </h3>
               <p className="text-sm text-muted-foreground uppercase tracking-wider">
                 MINUTES
               </p>
             </div>
+
             <div className="flex flex-col items-center justify-center p-8 rounded-2xl bg-background/50 backdrop-blur-sm border border-primary/10 hover:border-primary/20 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
               <h3 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-primary/80 to-primary/60 text-transparent bg-clip-text mb-2">
-                50K+
+                <CounterOnView end={50000} duration={1600} suffix="K+" />
               </h3>
               <p className="text-sm text-muted-foreground uppercase tracking-wider">
                 MESSAGES SENT

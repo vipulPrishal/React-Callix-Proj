@@ -56,7 +56,7 @@ const DemoCarousel = ({ autoPlay = true, interval = 3000 }) => {
   };
 
   return (
-    <div className="relative rounded-xl overflow-hidden border border-border/70 shadow-xl shadow-primary/10 h-[400px] group">
+    <div className="relative rounded-xl overflow-hidden border border-border/70 shadow-xl shadow-primary/10 h-[330px] group">
       {/* Main Image Container */}
       <div className="relative h-full overflow-hidden">
         {images.map((image, index) => (
