@@ -34,7 +34,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Textarea } from '@/components/ui/textarea';
 import { Container } from '@/components/common/container';
-import ButtonComp from './components/Hero/ButtonComp/ButtonComp';
 // import Button from './components/Hero/Button/Button';
 import TemplateCard from './components/Hero/TemplateCard/TemplateCard';
 import ExpandedContentCard from './components/HowItWorks/ExpandedContentCard';
