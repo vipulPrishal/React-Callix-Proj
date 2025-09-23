@@ -34,12 +34,12 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Textarea } from '@/components/ui/textarea';
 import { Container } from '@/components/common/container';
+import TemplateCard from './components/Hero/TemplateCard/TemplateCard';
 import ExpandedContentCard from './components/HowItWorks/ExpandedContentCard';
 import ExpandedContentWrapper from './components/HowItWorks/ExpandedContentWrapper';
 import StepCard from './components/HowItWorks/StepCard';
 import DemoCarousel from './components/KeyFeatures/DemoCarousel';
 import FeaturesCard from './components/KeyFeatures/FeaturesCard';
-import TemplateCard from './components/TemplateCard';
 
 const AiAgent = () => {
   const [prompt, setPrompt] = useState('');
