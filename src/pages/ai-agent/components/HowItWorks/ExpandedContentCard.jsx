@@ -3,7 +3,7 @@ import { Card } from '@/components/ui/card';
 
 const ExpandedContentCard = ({ icon: Icon, title, description }) => {
   return (
-    <Card className="p-6 bg-card/80 border border-border/50 rounded-xl">
+    <Card className="p-6 bg-card/80 border border-border/50 rounded-xl hover:border-primary/70 hover:shadow-md transition-all duration-300 cursor-pointer">
       <div className="flex items-center gap-4 mb-3">
         <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
           <Icon className="h-6 w-6 text-primary" />
