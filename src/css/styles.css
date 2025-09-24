@@ -33,7 +33,10 @@
   /* your site-wide primary color used by the cursor trail */
   --primary-color: #408bff;
 }
-
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
 /* Cursor trail effect */
 body:hover > #trailer {
   opacity: 1;

@@ -21,7 +21,9 @@ const StepCard = ({
       <div className="rounded-lg bg-muted/50 p-2 mb-4">
         <Icon className="h-6 w-6 text-primary" />
       </div>
-      <h3 className="text-xl font-bold text-foreground mb-2">{title}</h3>
+      <h3 className="text-xl lg:text-lg xl:text-xl font-bold text-foreground mb-2">
+        {title}
+      </h3>
       <p className="text-muted-foreground text-sm mb-2">{description}</p>
       <div className="text-primary mt-auto">
         {isExpanded ? (

@@ -378,7 +378,7 @@ const AiAgent = () => {
         </Container>
       </div>
       {/* How it Works Section */}
-      <section className="py-10 border-t border-border/30">
+      <section className="px-20 py-10 border-t border-border/30">
         <Container>
           <SectionHeader
             badge="Simple Process"
@@ -386,7 +386,7 @@ const AiAgent = () => {
             subtitle="Create and deploy your Voice AI assistant in five simple steps"
           />
           {/* Desktop Layout - All cards in one row, expanded content at bottom */}
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <div className="grid grid-cols-5 gap-4">
               {/* Step 1: Write */}
               <StepCard
@@ -563,7 +563,7 @@ const AiAgent = () => {
           </div>
 
           {/* Mobile Layout - Cards stacked vertically with expanded content below each */}
-          <div className="block md:hidden space-y-4">
+          <div className="block lg:hidden space-y-4">
             {/* Step 1: Write */}
             <div>
               <StepCard
@@ -842,7 +842,7 @@ const AiAgent = () => {
         </Container>
       </section>
       {/* Key Features Section */}
-      <section className="py-10 border-t border-border/30">
+      <section className="px-20 py-10 border-t border-border/30">
         <Container>
           <SectionHeader
             badge="Key Features"
@@ -877,10 +877,10 @@ const AiAgent = () => {
         </Container>
       </section>
       {/* Statistics Section */}
-      <section className="py-10 relative overflow-hidden">
+      <section className=" px-20 relative overflow-hidden">
         <Container>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="flex flex-col items-center justify-center p-8 rounded-2xl bg-background/50 backdrop-blur-sm border border-primary/10 hover:border-primary/20 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
+          <div className="grid grid-cols-1 md:grid-cols-2 ">
+            <div className="flex flex-col items-center justify-center p-8 rounded-2xl bg-background/50 backdrop-blur-sm border-none transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
               <h3 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-primary/80 to-primary/60 text-transparent bg-clip-text mb-2">
                 <CounterOnView end={150000} duration={1600} suffix="K+" />
               </h3>
@@ -889,7 +889,7 @@ const AiAgent = () => {
               </p>
             </div>
 
-            <div className="flex flex-col items-center justify-center p-8 rounded-2xl bg-background/50 backdrop-blur-sm border border-primary/10 hover:border-primary/20 transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
+            <div className="flex flex-col items-center justify-center p-8 rounded-2xl bg-background/50 backdrop-blur-sm  transition-all duration-300 hover:shadow-lg hover:shadow-primary/5">
               <h3 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-primary/80 to-primary/60 text-transparent bg-clip-text mb-2">
                 <CounterOnView end={50000} duration={1600} suffix="K+" />
               </h3>
