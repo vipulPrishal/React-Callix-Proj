@@ -51,7 +51,7 @@ const AiAgent = () => {
   const [typewriterText, setTypewriterText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
 
-  // const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [expandedCards, setExpandedCards] = useState({});
   useEffect(() => {
     const interval = setInterval(continuousTypewriter, isDeleting ? 50 : 50);
@@ -377,7 +377,6 @@ const AiAgent = () => {
           </div>
         </Container>
       </div>
-      {/* Testimonial Section */}
       {/* How it Works Section */}
       <section className="py-10 border-t border-border/30">
         <Container>
@@ -753,6 +752,91 @@ const AiAgent = () => {
                   />
                 </ExpandedContentWrapper>
               )}
+            </div>
+          </div>
+        </Container>
+      </section>
+      {/* Testimonials Section */}
+      <section className="py-10 border-t border-border/30">
+        <Container className="max-w-4xl text-center">
+          <div className="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+            Testimonials
+          </div>
+          <h2 className="text-2xl md:text-3xl font-bold tracking-tight mb-8">
+            What Our Users Say
+          </h2>
+
+          <div className="relative w-full">
+            <div className="overflow-hidden">
+              <div
+                className="flex transition-transform duration-500 ease-in-out"
+                style={{
+                  transform: `translateX(-${currentTestimonial * 100}%)`,
+                }}
+              >
+                {testimonials.map((t) => (
+                  <div key={t.id} className="w-full flex-shrink-0">
+                    <div className="px-4 sm:px-6 md:px-8">
+                      <div className="p-4 sm:p-6 md:p-8 rounded-xl bg-transparent flex flex-col items-center">
+                        <p className="text-base sm:text-lg md:text-xl italic text-muted-foreground mb-3 max-w-2xl leading-relaxed">
+                          "{t.quote}"
+                        </p>
+
+                        <div className="flex flex-col items-center leading-tight">
+                          <p className="text-xs sm:text-sm md:text-base text-foreground/90">
+                            {t.author}
+                          </p>
+                          <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
+                            {t.title}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex items-center justify-center mt-4 sm:mt-5 gap-2 sm:gap-3">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-6 w-6 sm:h-7 sm:w-7 rounded-full bg-background/60 hover:bg-background/80"
+                onClick={() =>
+                  setCurrentTestimonial((prev) =>
+                    prev === 0 ? testimonials.length - 1 : prev - 1,
+                  )
+                }
+              >
+                <ChevronLeft className="h-3 w-3 sm:h-4 sm:w-4" />
+              </Button>
+
+              <div className="flex items-center gap-1 sm:gap-2">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    className={`h-1.5 sm:h-2 rounded-full transition-all duration-300 ${
+                      index === currentTestimonial
+                        ? 'bg-primary w-3 sm:w-4'
+                        : 'bg-muted-foreground/50 w-1.5 sm:w-2'
+                    }`}
+                    onClick={() => setCurrentTestimonial(index)}
+                  />
+                ))}
+              </div>
+
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-6 w-6 sm:h-7 sm:w-7 rounded-full bg-background/60 hover:bg-background/80"
+                onClick={() =>
+                  setCurrentTestimonial(
+                    (prev) => (prev + 1) % testimonials.length,
+                  )
+                }
+              >
+                <ChevronRight className="h-3 w-3 sm:h-4 sm:w-4" />
+              </Button>
             </div>
           </div>
         </Container>
