@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Logo from '@/pages/ai-agent/components/Logo';
 import {
   ChevronDown,
   Menu,
@@ -89,7 +90,7 @@ export function HeaderLogo() {
 
   return (
     <div className="flex items-center gap-1.5 lg:gap-5">
-      <Link to="/">
+      {/* <Link to="/">
         <img
           src={toAbsoluteUrl('/media/app/mini-logo-circle.svg')}
           className="dark:hidden min-h-[34px]"
@@ -101,6 +102,10 @@ export function HeaderLogo() {
           className="hidden dark:inline-block min-h-[34px]"
           alt="logo"
         />
+      </Link> */}
+
+      <Link to="/">
+        <Logo className="text-lg" />
       </Link>
 
       {isMobile && (

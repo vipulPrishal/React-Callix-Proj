@@ -109,6 +109,7 @@
 /* VERSION2 :--- WEHRE WE FIXED THE AI AGENT PAGE  TO CENTER BY REMOVING SIDEBAR AND TOOLBAR FROM IT...*/
 
 import { useEffect, useState } from 'react';
+import Logo from '@/pages/ai-agent/components/Logo';
 import { addDays, format } from 'date-fns';
 import { CalendarDays } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
