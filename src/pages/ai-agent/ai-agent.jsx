@@ -29,6 +29,7 @@ import {
   Users,
   Workflow,
 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -50,6 +51,7 @@ const AiAgent = () => {
   const [activeTab, setActiveTab] = useState('popular');
   const [typewriterText, setTypewriterText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  const navigate = useNavigate();
 
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [expandedCards, setExpandedCards] = useState({});
@@ -66,6 +68,12 @@ const AiAgent = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
   const templates = {
     popular: [
       {
@@ -937,13 +945,18 @@ const AiAgent = () => {
             </Button>
           </div>
           {/* Call to action buttons */}
+          {/* Call to action buttons */}
           <div className="text-center mt-2 mb-2">
             <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
-              <Button className="h-11 min-w-[220px] px-5 rounded-lg bg-primary hover:bg-primary/90 inline-flex items-center justify-center">
+              <Button
+                onClick={scrollToTop}
+                className="h-11 min-w-[220px] px-5 rounded-lg bg-primary hover:bg-primary/90 inline-flex items-center justify-center"
+              >
                 Get Started for Free
               </Button>
 
               <Button
+                onClick={() => navigate('/ai-agent/contact-us')}
                 variant="outline"
                 className="h-11 min-w-[220px] px-5 rounded-lg border-primary/20 hover:bg-primary/10 inline-flex items-center justify-center"
               >
