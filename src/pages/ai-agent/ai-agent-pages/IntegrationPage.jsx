@@ -195,7 +195,7 @@ const IntegrationPage = () => {
         </div>
 
         {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-2 mb-8">
+        {/* <div className="flex flex-wrap justify-center gap-2 mb-8">
           {categories.map((category) => (
             <button
               key={category.value}
@@ -209,6 +209,41 @@ const IntegrationPage = () => {
               {category.label}
             </button>
           ))}
+        </div> */}
+
+        {/* Category Filter - Responsive: Tabs above sm, Dropdown below sm */}
+        <div className="mb-8">
+          {/* Tabs Style - Above sm (640px) */}
+          <div className="hidden sm:flex flex-wrap justify-center gap-6 border-b border-border/20">
+            {categories.map((category) => (
+              <button
+                key={category.value}
+                onClick={() => setSelectedCategory(category.value)}
+                className={`px-4 py-3 text-sm font-medium transition-colors border-b-2 ${
+                  selectedCategory === category.value
+                    ? 'text-primary border-primary'
+                    : 'text-muted-foreground border-transparent hover:text-foreground hover:border-border/40'
+                }`}
+              >
+                {category.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Dropdown - Below sm (640px) */}
+          <div className="sm:hidden flex justify-center">
+            <select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              className="px-4 py-2 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary min-w-[200px]"
+            >
+              {categories.map((category) => (
+                <option key={category.value} value={category.value}>
+                  {category.label}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
 
         {/* Integrations Grid - 50% 50% split */}
