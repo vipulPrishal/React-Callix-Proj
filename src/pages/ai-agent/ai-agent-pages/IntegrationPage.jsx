@@ -189,7 +189,9 @@ const IntegrationPage = () => {
               placeholder="Search integrations..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 h-10 text-base"
+              //   Disable all thing like it is not focused.
+              //   className="pl-10 h-10 text-base border border-primary/40 focus:outline-none focus:ring-0 focus:border-none  focus:shadow-none focus:ring-offset-0 "
+              className="pl-10 h-10 text-base border border-primary/40 focus:outline-none focus:ring-0 focus:border-primary/20 focus:shadow-none focus:ring-offset-0 focus-visible:ring-primary/25 focus-visible:border-primary/40 focus-visible:outline-none focus-visible:ring-offset-0"
             />
           </div>
         </div>
