@@ -4,6 +4,19 @@
 /* ReUI Configs */
 @import './config.reui.css';
 
+/* Custom Breakpoints for Tailwind v4 */
+@theme {
+  --breakpoint-xs: 475px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-mlg: 980px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+  --breakpoint-3xl: 1920px;
+  --breakpoint-4xl: 2560px;
+}
+
 /** Global Styles **/
 @layer base {
   * {

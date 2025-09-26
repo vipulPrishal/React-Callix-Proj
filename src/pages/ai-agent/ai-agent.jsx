@@ -939,6 +939,7 @@ const AiAgent = () => {
             <Button
               variant="outline"
               className="group h-11 min-w-[320px] px-5 rounded-lg border-primary/30  hover:bg-primary/10 inline-flex items-center justify-center"
+              onClick={() => navigate('/ai-agent/integrations')}
             >
               <span className="mr-2">Learn More About Integrations</span>
               <ArrowRight className="h-4 w-4 transform transition-transform duration-400 ease-out group-hover:translate-x-1 group-hover:scale-110" />
