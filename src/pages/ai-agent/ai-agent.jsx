@@ -519,12 +519,12 @@ Goals:
           <div className="max-w-6xl  mx-auto mb-6 ">
             <div className="relative min-h-[180px] rounded-lg shadow-[0_0_25px_rgba(59,130,246,0.5)] focus-within:border-2 focus-within:border-[#408bff]">
               {/* Text Content Area - Fixed height with scroll */}
-              <div className="px-3 pt-2 pb-2 min-h-[140px] overflow-y-auto ">
+              <div className="px-7 pt-2 pb-2 min-h-[140px] overflow-y-auto  ">
                 <Textarea
                   value={prompt}
                   onChange={(e) => setPrompt(e.target.value)}
                   placeholder={typewriterText}
-                  className="min-h-[120px] text-lg resize-none border-none focus:!border-none focus:!ring-0 bg-transparent p-0"
+                  className="min-h-[120px] text-lg resize-none border-none scrollbar-hide  focus:!border-none focus:!ring-0 bg-transparent p-0"
                   variant="lg"
                 />
               </div>
@@ -534,7 +534,7 @@ Goals:
                 <Button
                   variant="outline"
                   size="sm"
-                  className="border-primary/30 text-primary hover:bg-primary/10"
+                  className="border-primary/30 text-primary hover:bg-primary/20"
                 >
                   <Sparkles className="w-4 h-4 mr-2" />
                   Enhance Prompt

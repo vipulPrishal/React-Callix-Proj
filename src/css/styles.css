@@ -50,7 +50,22 @@ html::-webkit-scrollbar,
 body::-webkit-scrollbar {
   display: none; /* Chrome/Safari */
 }
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
 
+.scrollbar-hide::-webkit-scrollbar {
+  display: none !important; /* Chrome, Safari and Opera */
+}
+
+.scrollbar-hide::-webkit-scrollbar-track {
+  display: none !important;
+}
+
+.scrollbar-hide::-webkit-scrollbar-thumb {
+  display: none !important;
+}
 /* Cursor trail effect */
 body:hover > #trailer {
   opacity: 1;
