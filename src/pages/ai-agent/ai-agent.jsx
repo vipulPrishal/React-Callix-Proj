@@ -55,6 +55,41 @@ const AiAgent = () => {
 
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [expandedCards, setExpandedCards] = useState({});
+  // Add these states after your existing useState declarations (around line 50)
+  const [isCreating, setIsCreating] = useState(false);
+  const [loadingProgress, setLoadingProgress] = useState(0);
+
+  const handleCreateAgent = async () => {
+    if (!prompt.trim()) return;
+
+    setIsCreating(true);
+    setLoadingProgress(0);
+
+    // Disable body scroll
+    document.body.classList.add('loading-active');
+
+    // Simulate API call with progress updates
+    try {
+      for (let i = 0; i <= 100; i += 5) {
+        await new Promise((resolve) => setTimeout(resolve, 150));
+        setLoadingProgress(i);
+      }
+
+      // Your actual API call here
+      await new Promise((resolve) => setTimeout(resolve, 500));
+
+      // Handle success
+      console.log('Agent created successfully!');
+    } catch (error) {
+      console.error('Error creating agent:', error);
+    } finally {
+      setIsCreating(false);
+      setLoadingProgress(0);
+
+      // Re-enable body scroll
+      document.body.classList.remove('loading-active');
+    }
+  };
   useEffect(() => {
     const interval = setInterval(continuousTypewriter, isDeleting ? 50 : 50);
     return () => clearInterval(interval);
@@ -539,7 +574,7 @@ Goals:
                   <Sparkles className="w-4 h-4 mr-2" />
                   Enhance Prompt
                 </Button>
-                <Button
+                {/* <Button
                   size="lg"
                   disabled={!prompt.trim()}
                   className={`px-6 py-3 rounded-lg shadow-lg ${
@@ -549,6 +584,20 @@ Goals:
                   }`}
                 >
                   Create Agent
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button> */}
+
+                <Button
+                  size="lg"
+                  disabled={!prompt.trim() || isCreating}
+                  onClick={handleCreateAgent}
+                  className={`px-6 py-3 rounded-lg shadow-lg ${
+                    prompt.trim() && !isCreating
+                      ? 'bg-primary hover:bg-primary/90 text-white'
+                      : 'bg-gray-400 text-gray-200 cursor-not-allowed'
+                  }`}
+                >
+                  {isCreating ? 'Creating...' : 'Create Agent'}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </div>
@@ -1240,6 +1289,47 @@ Goals:
         </Container>
       </section>
       {/* Original Footer */}
+      {/* ------------------Loading Modal ------------------------ */}
+      {/* Loading Modal */}
+      {isCreating && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          {/* Backdrop with blur - This will block all interactions */}
+          <div
+            className="absolute inset-0 bg-black/50 backdrop-blur-md"
+            onClick={(e) => e.preventDefault()} // Prevent any clicks
+            onScroll={(e) => e.preventDefault()} // Prevent scrolling
+            style={{
+              touchAction: 'none', // Disable touch gestures
+              userSelect: 'none', // Disable text selection
+              pointerEvents: 'auto', // Ensure it captures all pointer events
+            }}
+          ></div>
+
+          {/* Loading content */}
+          <div className="relative z-10 flex flex-col items-center justify-center p-8 rounded-lg shadow-lg ">
+            {/* Animated Text */}
+            <div className="text-white text-2xl font-bold mb-6 flex items-center">
+              Creating
+              <span className="animated-dots ml-1"></span>
+            </div>
+
+            {/* Loading Bar */}
+            <div className="w-80 h-8 border-2 border-black rounded-md overflow-hidden relative bg-white">
+              <div
+                className="absolute top-0 left-0 h-full bg-primary/80"
+                style={{
+                  width: `${loadingProgress}%`,
+                  clipPath: `polygon(0 0, ${loadingProgress}% 0, ${loadingProgress - 5}% 100%, 0 100%)`,
+                  transition: 'width 0.1s linear, clip-path 0.1s linear',
+                }}
+              ></div>
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-black font-bold text-sm">
+                {loadingProgress}%
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
