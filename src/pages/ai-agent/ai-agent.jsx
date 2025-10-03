@@ -552,20 +552,20 @@ Goals:
           {/* // Update the prompt box section (around line 518-540) */}
           {/* Prompt box */}
           <div className="max-w-6xl  mx-auto mb-6 ">
-            <div className="relative min-h-[180px] rounded-lg shadow-[0_0_25px_rgba(59,130,246,0.5)] focus-within:border-2 focus-within:border-[#408bff]">
+            <div className="relative min-h-[200px] rounded-lg shadow-[0_0_25px_rgba(59,130,246,0.5)] focus-within:border-2 focus-within:border-[#408bff]">
               {/* Text Content Area - Fixed height with scroll */}
-              <div className="px-7 pt-2 pb-2 min-h-[140px] overflow-y-auto  ">
+              <div className="px-7 pt-2 pb-2 min-h-[150px] overflow-y-auto  ">
                 <Textarea
                   value={prompt}
                   onChange={(e) => setPrompt(e.target.value)}
                   placeholder={typewriterText}
-                  className="min-h-[120px] text-lg resize-none border-none scrollbar-hide  focus:!border-none focus:!ring-0 bg-transparent p-0"
+                  className="min-h-[140px] text-lg resize-none border-none scrollbar-hide  focus:!border-none focus:!ring-0 bg-transparent p-0"
                   variant="lg"
                 />
               </div>
 
               {/* Buttons Area - Fixed at bottom */}
-              <div className="px-6 pb-2 min-h-[40px] flex items-center justify-between">
+              <div className="px-6 pb-2 min-h-[50px] flex items-center justify-between">
                 <Button
                   variant="outline"
                   size="sm"
@@ -1290,7 +1290,6 @@ Goals:
       </section>
       {/* Original Footer */}
       {/* ------------------Loading Modal ------------------------ */}
-      {/* Loading Modal */}
       {isCreating && (
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           {/* Backdrop with blur - This will block all interactions */}
