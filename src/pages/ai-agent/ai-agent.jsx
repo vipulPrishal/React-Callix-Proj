@@ -574,18 +574,6 @@ Goals:
                   <Sparkles className="w-4 h-4 mr-2" />
                   Enhance Prompt
                 </Button>
-                {/* <Button
-                  size="lg"
-                  disabled={!prompt.trim()}
-                  className={`px-6 py-3 rounded-lg shadow-lg ${
-                    prompt.trim()
-                      ? 'bg-primary hover:bg-primary/90 text-white'
-                      : 'bg-gray-400 text-gray-200 cursor-not-allowed'
-                  }`}
-                >
-                  Create Agent
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button> */}
 
                 <Button
                   size="lg"
