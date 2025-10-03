@@ -50,6 +50,7 @@ html::-webkit-scrollbar,
 body::-webkit-scrollbar {
   display: none; /* Chrome/Safari */
 }
+
 /* Cursor trail effect */
 body:hover > #trailer {
   opacity: 1;
