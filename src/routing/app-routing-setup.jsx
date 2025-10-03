@@ -94,6 +94,7 @@ import {
 } from '@/pages/store-client';
 import { Navigate, Route, Routes } from 'react-router';
 import AiAgent from '../pages/ai-agent/ai-agent';
+import AgentDetail from '../pages/ai-agent/ai-agent-pages/AgentDetail';
 import ContactUs from '../pages/ai-agent/ai-agent-pages/ContactUs';
 import IntegrationPage from '../pages/ai-agent/ai-agent-pages/IntegrationPage';
 
@@ -455,6 +456,7 @@ export function AppRoutingSetup() {
 
           <Route path="/ai-agent/contact-us" element={<ContactUs />} />
           <Route path="/ai-agent/integrations" element={<IntegrationPage />} />
+          <Route path="/ai-agent/agent/:agentId" element={<AgentDetail />} />
         </Route>
       </Route>
 
