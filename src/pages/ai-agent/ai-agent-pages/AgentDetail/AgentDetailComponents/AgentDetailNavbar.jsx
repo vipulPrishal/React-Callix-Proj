@@ -366,14 +366,13 @@ const AgentDetailNavbar = ({
         )}
       </Container>
 
-      {/* Click outside to close dropdowns */}
-      {(showDirectionDropdown || showDeployDropdown || isMobileMenuOpen) && (
+      {/* Click outside to close dropdowns - ONLY for desktop dropdowns */}
+      {(showDirectionDropdown || showDeployDropdown) && (
         <div
           className="fixed inset-0 z-40"
           onClick={() => {
             setShowDirectionDropdown(false);
             setShowDeployDropdown(false);
-            setIsMobileMenuOpen(false);
           }}
         />
       )}
