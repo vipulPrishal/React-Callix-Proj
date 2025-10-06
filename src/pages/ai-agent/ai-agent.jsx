@@ -59,42 +59,6 @@ const AiAgent = () => {
   const [isCreating, setIsCreating] = useState(false);
   const [loadingProgress, setLoadingProgress] = useState(0);
 
-  const handleCreateAgent = async () => {
-    if (!prompt.trim()) return;
-
-    setIsCreating(true);
-    setLoadingProgress(0);
-
-    // Disable body scroll
-    document.body.classList.add('loading-active');
-
-    // Simulate API call with progress updates
-    try {
-      for (let i = 0; i <= 100; i += 5) {
-        await new Promise((resolve) => setTimeout(resolve, 150));
-        setLoadingProgress(i);
-      }
-
-      // Your actual API call here
-      await new Promise((resolve) => setTimeout(resolve, 500));
-
-      // Handle success
-      console.log('Agent created successfully!');
-    } catch (error) {
-      console.error('Error creating agent:', error);
-    } finally {
-      setIsCreating(false);
-      setLoadingProgress(0);
-
-      // Re-enable body scroll
-      document.body.classList.remove('loading-active');
-    }
-  };
-  useEffect(() => {
-    const interval = setInterval(continuousTypewriter, isDeleting ? 50 : 50);
-    return () => clearInterval(interval);
-  }, [typewriterText, isDeleting]);
-
   // const handleCreateAgent = async () => {
   //   if (!prompt.trim()) return;
 
@@ -104,29 +68,65 @@ const AiAgent = () => {
   //   // Disable body scroll
   //   document.body.classList.add('loading-active');
 
+  //   // Simulate API call with progress updates
   //   try {
-  //     // Simulate progress
   //     for (let i = 0; i <= 100; i += 5) {
   //       await new Promise((resolve) => setTimeout(resolve, 150));
   //       setLoadingProgress(i);
   //     }
 
-  //     // Generate unique agent ID
-  //     const agentId = Math.floor(Math.random() * 100000) + 10000; // 5-digit random number
+  //     // Your actual API call here
+  //     await new Promise((resolve) => setTimeout(resolve, 500));
 
-  //     // In real app, you'd save the agent data to your backend here
-  //     // await saveAgent({ id: agentId, prompt, createdAt: new Date() });
-
-  //     // Navigate to the new agent page
-  //     navigate(`/ai-agent/agent/${agentId}`);
+  //     // Handle success
+  //     console.log('Agent created successfully!');
   //   } catch (error) {
   //     console.error('Error creating agent:', error);
   //   } finally {
   //     setIsCreating(false);
   //     setLoadingProgress(0);
+
+  //     // Re-enable body scroll
   //     document.body.classList.remove('loading-active');
   //   }
   // };
+  useEffect(() => {
+    const interval = setInterval(continuousTypewriter, isDeleting ? 50 : 50);
+    return () => clearInterval(interval);
+  }, [typewriterText, isDeleting]);
+
+  const handleCreateAgent = async () => {
+    if (!prompt.trim()) return;
+
+    setIsCreating(true);
+    setLoadingProgress(0);
+
+    // Disable body scroll
+    document.body.classList.add('loading-active');
+
+    try {
+      // Simulate progress
+      for (let i = 0; i <= 100; i += 5) {
+        await new Promise((resolve) => setTimeout(resolve, 150));
+        setLoadingProgress(i);
+      }
+
+      // Generate unique agent ID
+      const agentId = Math.floor(Math.random() * 100000) + 10000; // 5-digit random number
+
+      // In real app, you'd save the agent data to your backend here
+      // await saveAgent({ id: agentId, prompt, createdAt: new Date() });
+
+      // Navigate to the new agent page
+      navigate(`/ai-agent/agent/${agentId}`);
+    } catch (error) {
+      console.error('Error creating agent:', error);
+    } finally {
+      setIsCreating(false);
+      setLoadingProgress(0);
+      document.body.classList.remove('loading-active');
+    }
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {

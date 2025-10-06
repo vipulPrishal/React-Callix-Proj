@@ -94,7 +94,7 @@ import {
 } from '@/pages/store-client';
 import { Navigate, Route, Routes } from 'react-router';
 import AiAgent from '../pages/ai-agent/ai-agent';
-import AgentDetail from '../pages/ai-agent/ai-agent-pages/AgentDetail';
+import AgentDetail from '../pages/ai-agent/ai-agent-pages/AgentDetail/AgentDetail';
 import ContactUs from '../pages/ai-agent/ai-agent-pages/ContactUs';
 import IntegrationPage from '../pages/ai-agent/ai-agent-pages/IntegrationPage';
 
