@@ -121,7 +121,7 @@ const AgentDetail = () => {
         </div>
 
         {/* Right Column - Remaining space (60%) */}
-        <AgentDetailMainRight />
+        <AgentDetailMainRight setHasChanges={setHasChanges} />
       </div>
     </div>
   );

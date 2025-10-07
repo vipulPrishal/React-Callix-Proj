@@ -82,7 +82,7 @@ const SectionItem = ({
             value={section.content}
             onChange={(e) => onChangeText(index, e.target.value)}
             placeholder="Write instructions for this step..."
-            className="min-h-[110px] resize-y bg-muted/30 border-border/50 text-foreground"
+            className="min-h-[110px] resize-none bg-muted/30 border-border/50 text-foreground"
           />
         </div>
       )}
@@ -90,7 +90,7 @@ const SectionItem = ({
   );
 };
 
-const AgentDetailMainRight = () => {
+const AgentDetailMainRight = ({ setHasChanges }) => {
   const initialSections = useMemo(
     () => [
       {
@@ -136,18 +136,29 @@ const AgentDetailMainRight = () => {
       prev.map((s, i) => (i === idx ? { ...s, ...patch } : s)),
     );
 
+  const flagChange = () => setHasChanges && setHasChanges(true);
   const handleToggleOpen = (idx) =>
     updateSection(idx, { open: !sections[idx].open });
-  const handleToggleActive = (idx, v) => updateSection(idx, { active: v });
-  const handleChangeText = (idx, text) => updateSection(idx, { content: text });
-  const handleDelete = (idx) =>
+  const handleToggleActive = (idx, v) => {
+    updateSection(idx, { active: v });
+    flagChange();
+  };
+  const handleChangeText = (idx, text) => {
+    updateSection(idx, { content: text });
+    flagChange();
+  };
+  const handleDelete = (idx) => {
     setSections((prev) => prev.filter((_, i) => i !== idx));
+    flagChange();
+  };
 
-  const addSection = () =>
+  const addSection = () => {
     setSections((prev) => [
       ...prev,
       { title: `New Section`, content: '', open: true, active: true },
     ]);
+    flagChange();
+  };
 
   return (
     <div className="flex-1 bg-background overflow-y-auto">
@@ -186,24 +197,42 @@ const AgentDetailMainRight = () => {
             <div className="flex items-center gap-6">
               <div className="flex items-center gap-2">
                 <span className="text-xs text-muted-foreground">Dynamic</span>
-                <Toggle checked={isDynamic} onChange={setIsDynamic} />
+                <Toggle
+                  checked={isDynamic}
+                  onChange={(v) => {
+                    setIsDynamic(v);
+                    flagChange();
+                  }}
+                />
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-xs text-muted-foreground">
                   Interruption
                 </span>
-                <Toggle checked={interruption} onChange={setInterruption} />
+                <Toggle
+                  checked={interruption}
+                  onChange={(v) => {
+                    setInterruption(v);
+                    flagChange();
+                  }}
+                />
               </div>
             </div>
           </div>
-          <Textarea
-            value={welcomeMessage}
-            onChange={(e) => setWelcomeMessage(e.target.value)}
-            className="min-h-[64px] resize-y bg-muted/30 border-border/50 text-foreground"
-            placeholder="Type the welcome message…"
-          />
-          <div className="text-right text-xs text-muted-foreground">
-            Character limit: 300
+          <div className="relative">
+            <Textarea
+              value={welcomeMessage}
+              onChange={(e) => {
+                setWelcomeMessage(e.target.value.slice(0, 300));
+                flagChange();
+              }}
+              className="min-h-[64px] resize-none bg-muted/30 border-border/50 text-foreground pr-20"
+              placeholder="Type the welcome message…"
+            />
+            <div className="flex items-center justify-between mt-1 text-xs text-muted-foreground px-1">
+              <span>Character limit: 300</span>
+              <span>{300 - welcomeMessage.length} remaining</span>
+            </div>
           </div>
         </div>
 
