@@ -1,18 +1,229 @@
-import React from 'react';
+// ----- version 2:----- (making the left component)------------------
+import React, { useEffect, useRef, useState } from 'react';
+import { Send } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Textarea } from '@/components/ui/textarea';
 
-const AgentDetailMainLeft = ({ width }) => {
+const AgentDetailMainLeft = ({ width, agentId }) => {
+  const [messages, setMessages] = useState([]);
+  const [inputMessage, setInputMessage] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+  const [isTypewriterActive, setIsTypewriterActive] = useState(false);
+  const messagesEndRef = useRef(null);
+  const textareaRef = useRef(null);
+
+  // Auto-scroll to bottom when new messages are added
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const getAgentCreatedAt = () => {
+    const key = `agent_created_at_${agentId}`;
+    const saved = localStorage.getItem(key);
+    if (saved) return new Date(saved);
+    const now = new Date();
+    localStorage.setItem(key, now.toISOString());
+    return now;
+  };
+
+  useEffect(() => {
+    if (messages.length === 0 && agentId) {
+      const createdAt = getAgentCreatedAt();
+
+      const userMessage = {
+        id: 1,
+        type: 'user',
+        content: `Create a voice AI agent to schedule an appointments. Personality: - Courteous, organized, and efficient. Capabilities: - Check calendars and find open times in real time. - Offer the best and backup slots automatically. Call Flow: 1. Professional greeting. 2. Collect caller's name, desired service, and preferred dates/times. 3. Suggest available slots and confirm selection. 4. Provide confirmation 5. End with a friendly closing. Error Handling: - If availability changes mid-call, apologize and offer the next best slot. - Clarify unclear dates/times (e.g., "Did you mean next Tuesday, June 10th?"). Goals: - Make scheduling painless for customers. - Reduce back-and-forth and no-shows. - Keep staff calendars accurate. - Free front-desk teams for personal interactions.`,
+        timestamp: createdAt, // use actual creation time
+      };
+
+      const systemMessage = {
+        id: 2,
+        type: 'system',
+        content:
+          'Your assistant is ready. This helper chat will guide you with your agent setup, integrations, and platform help. Ask anything, like: "How do I integrate with N8N?"',
+        timestamp: new Date(),
+      };
+
+      setMessages([userMessage, systemMessage]);
+    }
+  }, [messages.length, agentId]);
+
+  const addUserMessage = (content) => {
+    const newMessage = {
+      id: Date.now(),
+      type: 'user',
+      content,
+      timestamp: new Date(),
+    };
+    setMessages((prev) => [...prev, newMessage]);
+  };
+
+  const addAssistantMessage = (content) => {
+    const newMessage = {
+      id: Date.now(),
+      type: 'assistant',
+      content,
+      timestamp: new Date(),
+    };
+    setMessages((prev) => [...prev, newMessage]);
+  };
+
+  const handleSendMessage = async () => {
+    if (!inputMessage.trim()) return;
+
+    // Add user message
+    addUserMessage(inputMessage);
+    setInputMessage('');
+    setIsTyping(true);
+
+    // Simulate assistant response
+    setTimeout(() => {
+      const responses = [
+        "It seems like there might have been a typo! Could you please tell me what you'd like to do or what you need help with regarding your agent? For example, are you looking to enhance its: * Voice quality? * Response accuracy? * Integration setup? * Call handling? Let me know how I can assist you!",
+        "It looks like there might be a misunderstanding with the input. Could you please clarify what you'd like to do or what you need help with regarding your agent? I'm here to assist you with things like: * Optimizing its voice? * Improving response accuracy? * Setting up integrations? * Testing its performance? Let me know how I can best help!",
+        "I understand you're looking for assistance. Could you please provide more details about what you'd like to accomplish with your agent? I can help you with: * Configuration settings * Integration setup * Performance optimization * Troubleshooting issues",
+      ];
+
+      const randomResponse =
+        responses[Math.floor(Math.random() * responses.length)];
+      addAssistantMessage(randomResponse);
+      setIsTyping(false);
+    }, 1500);
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage();
+    }
+  };
+
+  const formatTimestamp = (date) => {
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true,
+    });
+  };
+
   return (
     <div
-      className="bg-background border-r border-border/30"
+      className="bg-background border-r border-border/30 flex flex-col h-full"
       style={{ width: `${width}%` }}
     >
-      <div className="h-full p-4">
-        <h3 className="text-lg font-semibold text-foreground mb-2">
-          Left Column ({width.toFixed(1)}%)
-        </h3>
-        <p className="text-muted-foreground">
-          This is the left column. Width: {width.toFixed(1)}%
-        </p>
+      {/* Messages Container */}
+      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+        {messages.map((message) => (
+          <div key={message.id} className="flex flex-col">
+            {message.type === 'user' ? (
+              // User Message - Dark grey bubble with white text
+              <div className="flex justify-end">
+                <div className="max-w-[85%]">
+                  <div className="bg-muted/50 border border-border/50 rounded-lg p-3 mb-1">
+                    <p className="text-foreground text-sm whitespace-pre-line">
+                      {message.content}
+                    </p>
+                  </div>
+                  <p className="text-xs text-muted-foreground text-right">
+                    {formatTimestamp(message.timestamp)}
+                  </p>
+                </div>
+              </div>
+            ) : message.type === 'system' ? (
+              // System Message - Primary color background, full width
+              <div className="flex justify-start">
+                <div className="w-full">
+                  <div className="bg-primary/20 border border-primary/50 rounded-lg p-3 mb-1">
+                    <p className="text-primary text-sm">{message.content}</p>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              // Assistant Message - Dark grey bubble
+              <div className="flex justify-start">
+                <div className="max-w-[85%]">
+                  <div className="bg-muted/50 border border-border/50 rounded-lg p-3 mb-1">
+                    <p className="text-foreground text-sm whitespace-pre-line">
+                      {message.content}
+                    </p>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    {formatTimestamp(message.timestamp)}
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+
+        {/* Typing Indicator */}
+        {isTyping && (
+          <div className="flex justify-start">
+            <div className="max-w-[85%]">
+              <div className="bg-muted/50 border border-border/50 rounded-lg p-3 mb-1">
+                <div className="flex items-center space-x-1">
+                  <div className="flex space-x-1">
+                    <div className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce"></div>
+                    <div
+                      className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce"
+                      style={{ animationDelay: '0.1s' }}
+                    ></div>
+                    <div
+                      className="w-2 h-2 bg-muted-foreground rounded-full animate-bounce"
+                      style={{ animationDelay: '0.2s' }}
+                    ></div>
+                  </div>
+                  <span className="text-muted-foreground text-sm ml-2">
+                    Assistant is typing...
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        <div ref={messagesEndRef} />
+      </div>
+
+      {/* Input Area - textarea with inside button */}
+      <div className="border-t border-border/30 pt-4 px-4 pb-1">
+        <div className="relative  ">
+          <Textarea
+            ref={textareaRef}
+            value={inputMessage}
+            onChange={(e) => setInputMessage(e.target.value)}
+            onKeyPress={handleKeyPress}
+            placeholder="Let me know how I can help you..."
+            className="w-full  min-h-[72px] max-h-[140px] resize-none bg-muted/50 border-border/50 text-foreground rounded-md"
+            rows={5}
+          />
+          <button
+            type="button"
+            onClick={handleSendMessage}
+            disabled={!inputMessage.trim() || isTyping}
+            className="absolute bottom-4 right-3 h-9 w-9 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed grid place-items-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-4 w-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path d="M22 2L11 13" />
+              <path d="M22 2l-7 20-4-9-9-4 20-7z" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
   );

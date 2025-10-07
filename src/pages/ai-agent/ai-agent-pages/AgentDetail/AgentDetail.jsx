@@ -103,9 +103,12 @@ const AgentDetail = () => {
       />
 
       {/* Main Content - Two Column Layout */}
-      <div ref={containerRef} className="flex-1 flex overflow-hidden">
+      <div
+        ref={containerRef}
+        className="flex-1 flex overflow-hidden border-b border-border/80 "
+      >
         {/* Left Column - 40% (resizable 20%-40%) */}
-        <AgentDetailMainLeft width={leftColumnWidth} />
+        <AgentDetailMainLeft width={leftColumnWidth} agentId={agentId} />
 
         {/* Draggable Divider - Made it wider and more visible */}
 
