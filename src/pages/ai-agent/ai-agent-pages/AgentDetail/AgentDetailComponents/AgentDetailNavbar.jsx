@@ -36,21 +36,30 @@ const AgentDetailNavbar = ({
 }) => {
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const [originalName, setOriginalName] = React.useState(agentName);
 
   const handleNameChange = (e) => {
     setAgentName(e.target.value);
-    setHasChanges(true);
   };
 
   const handleNameSubmit = () => {
     setIsEditingName(false);
-    setHasChanges(true);
+    // Only set hasChanges if the name actually changed
+    if (agentName !== originalName) {
+      setHasChanges(true);
+      setOriginalName(agentName);
+    }
   };
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       handleNameSubmit();
     }
+  };
+
+  const handleNameClick = () => {
+    setOriginalName(agentName); // Store the original name when starting to edit
+    setIsEditingName(true);
   };
 
   const formatTime = (date) => {
@@ -90,7 +99,7 @@ const AgentDetailNavbar = ({
                 />
               ) : (
                 <div
-                  onClick={() => setIsEditingName(true)}
+                  onClick={handleNameClick}
                   className="px-3 py-2 bg-muted/50 border border-border/50 rounded-md cursor-pointer hover:bg-muted/70 transition-colors w-full llg:w-auto llg:min-w-[200px]"
                 >
                   <span className="text-foreground text-base truncate">
