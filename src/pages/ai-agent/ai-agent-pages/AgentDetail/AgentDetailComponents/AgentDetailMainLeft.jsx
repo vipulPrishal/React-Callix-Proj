@@ -8,7 +8,15 @@ const AgentDetailMainLeft = ({ width, agentId }) => {
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const [isTypewriterActive, setIsTypewriterActive] = useState(false);
+  // Typewriter placeholder state
+  const prompts = [
+    'Let me know how I can help you…',
+    'Ask anything like: “How do I integrate with N8N?”',
+    'Describe what you want your agent to do…',
+  ];
+  const [typewriterText, setTypewriterText] = useState('');
+  const [twIdx, setTwIdx] = useState(0);
+  const [charIdx, setCharIdx] = useState(0);
   const messagesEndRef = useRef(null);
   const textareaRef = useRef(null);
 
@@ -20,6 +28,24 @@ const AgentDetailMainLeft = ({ width, agentId }) => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Typewriter effect for placeholder (mirror AI Agent page pacing)
+  useEffect(() => {
+    const current = prompts[twIdx % prompts.length];
+    const timer = setTimeout(() => {
+      if (charIdx < current.length) {
+        setTypewriterText(current.slice(0, charIdx + 1));
+        setCharIdx((c) => c + 1);
+      } else {
+        setTimeout(() => {
+          setCharIdx(0);
+          setTwIdx((i) => i + 1);
+          setTypewriterText('');
+        }, 1200);
+      }
+    }, 40);
+    return () => clearTimeout(timer);
+  }, [charIdx, twIdx]);
 
   const getAgentCreatedAt = () => {
     const key = `agent_created_at_${agentId}`;
@@ -193,23 +219,26 @@ const AgentDetailMainLeft = ({ width, agentId }) => {
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Input Area - textarea with inside button */}
+      {/* Input Area - AI Agent prompt style */}
       <div className="border-t border-border/30 pt-4 px-4 pb-1">
-        <div className="relative  ">
-          <Textarea
-            ref={textareaRef}
-            value={inputMessage}
-            onChange={(e) => setInputMessage(e.target.value)}
-            onKeyPress={handleKeyPress}
-            placeholder="Let me know how I can help you..."
-            className="w-full  min-h-[72px] max-h-[140px] resize-none bg-muted/50 border-border/50 text-foreground rounded-md"
-            rows={5}
-          />
+        <div className="relative rounded-lg shadow-[0_0_25px_rgba(64,139,255,0.35)] border border-border/60 focus-within:border-2 focus-within:border-[#408bff]">
+          <div className="px-4 pt-2 pb-3 min-h-[120px] overflow-y-auto">
+            <Textarea
+              ref={textareaRef}
+              value={inputMessage}
+              onChange={(e) => setInputMessage(e.target.value)}
+              onKeyPress={handleKeyPress}
+              placeholder={typewriterText}
+              rows={4}
+              className="min-h-[110px] text-base resize-none border-none scrollbar-hide focus:!border-none focus:!ring-0 bg-transparent p-0 pr-14 text-foreground"
+            />
+          </div>
           <button
             type="button"
             onClick={handleSendMessage}
             disabled={!inputMessage.trim() || isTyping}
-            className="absolute bottom-4 right-3 h-9 w-9 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed grid place-items-center"
+            className="absolute bottom-2 right-2 h-9 w-9 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed grid place-items-center"
+            aria-label="Send"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
