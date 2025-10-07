@@ -153,14 +153,14 @@ const AgentDetailMainLeft = ({ width, agentId }) => {
               // User Message - Dark grey bubble with white text
               <div className="flex justify-end">
                 <div className="max-w-[85%]">
-                  <div className="bg-muted/50 border border-border/50 rounded-lg p-3 mb-1">
+                  <div className="bg-muted/50 border border-border/50 rounded-lg p-3">
                     <p className="text-foreground text-sm whitespace-pre-line">
                       {message.content}
                     </p>
+                    <div className="mt-2 text-xs text-muted-foreground text-right">
+                      {formatTimestamp(message.timestamp)}
+                    </div>
                   </div>
-                  <p className="text-xs text-muted-foreground text-right">
-                    {formatTimestamp(message.timestamp)}
-                  </p>
                 </div>
               </div>
             ) : message.type === 'system' ? (
@@ -176,14 +176,14 @@ const AgentDetailMainLeft = ({ width, agentId }) => {
               // Assistant Message - Dark grey bubble
               <div className="flex justify-start">
                 <div className="max-w-[85%]">
-                  <div className="bg-muted/50 border border-border/50 rounded-lg p-3 mb-1">
+                  <div className="bg-muted/50 border border-border/50 rounded-lg p-3">
                     <p className="text-foreground text-sm whitespace-pre-line">
                       {message.content}
                     </p>
+                    <div className="mt-2 text-xs text-muted-foreground text-right">
+                      {formatTimestamp(message.timestamp)}
+                    </div>
                   </div>
-                  <p className="text-xs text-muted-foreground">
-                    {formatTimestamp(message.timestamp)}
-                  </p>
                 </div>
               </div>
             )}
