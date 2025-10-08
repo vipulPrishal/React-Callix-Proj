@@ -107,7 +107,7 @@ const AgentDetailMainRight = ({ setHasChanges }) => {
   };
 
   return (
-    <div className="flex-1 bg-background overflow-y-auto  mb-5">
+    <div className="flex-1 bg-background overflow-y-auto  mb-5 scrollbar-thin">
       <div className="h-full p-6 space-y-6">
         {/* Tabs mimic (static for now) */}
         <div className="flex gap-2 text-sm">

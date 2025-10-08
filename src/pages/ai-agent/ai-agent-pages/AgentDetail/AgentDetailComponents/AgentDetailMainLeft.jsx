@@ -142,7 +142,7 @@ const AgentDetailMainLeft = ({ width, agentId }) => {
 
   return (
     <div
-      className="bg-background border-r border-border/30 flex flex-col justify-between mb-4"
+      className="bg-background border-r border-border/30 flex flex-col justify-between mb-4 scrollbar-thin"
       style={{ width: `${width}%` }}
     >
       {/* Messages Container */}
