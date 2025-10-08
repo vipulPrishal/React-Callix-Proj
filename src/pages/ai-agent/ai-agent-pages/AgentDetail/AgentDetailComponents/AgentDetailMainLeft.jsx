@@ -221,7 +221,7 @@ const AgentDetailMainLeft = ({ width, agentId }) => {
 
       {/* Input Area - AI Agent prompt style */}
       <div className="border-t border-border/30 pt-4 px-4 pb-1">
-        <div className="relative rounded-lg shadow-[0_0_25px_rgba(64,139,255,0.35)] border border-border/60 focus-within:border-2 focus-within:border-[#408bff]">
+        <div className="relative rounded-lg border border-border/100 focus-within:border-2 focus-within:border-[#408bff]">
           <div className="px-4 pt-2 pb-3 min-h-[120px] overflow-y-auto">
             <Textarea
               ref={textareaRef}
