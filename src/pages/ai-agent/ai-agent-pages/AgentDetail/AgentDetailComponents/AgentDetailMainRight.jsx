@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
-import { ChevronDown, ChevronRight, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
+import FlowSectionItem from './FlowSectionItem';
 
 const Toggle = ({ checked, onChange }) => (
   <button
@@ -19,76 +19,7 @@ const Toggle = ({ checked, onChange }) => (
   </button>
 );
 
-const SectionItem = ({
-  index,
-  section,
-  onToggleOpen,
-  onToggleActive,
-  onChangeText,
-  onDelete,
-}) => {
-  const muted = !section.active;
-  return (
-    <div
-      className={`rounded-md border border-border/60 ${
-        section.open ? 'ring-1 ring-primary/40' : ''
-      }`}
-    >
-      {/* Header */}
-      <div
-        className={`flex items-center justify-between px-3 py-2 ${
-          muted ? 'opacity-60' : ''
-        }`}
-      >
-        <div className="flex items-center gap-2">
-          <button
-            className="p-1 rounded hover:bg-muted/40"
-            onClick={() => onToggleOpen(index)}
-          >
-            {section.open ? (
-              <ChevronDown className="w-4 h-4" />
-            ) : (
-              <ChevronRight className="w-4 h-4" />
-            )}
-          </button>
-          <span className="text-sm text-foreground select-none">
-            {index + 1}. {section.title}
-          </span>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <span className="text-xs text-muted-foreground">
-            {section.active ? 'ON' : 'OFF'}
-          </span>
-          <Toggle
-            checked={section.active}
-            onChange={(v) => onToggleActive(index, v)}
-          />
-
-          <button
-            onClick={() => onDelete(index)}
-            className="ml-2 p-2 rounded hover:bg-red-500/10 hover:text-red-500 text-muted-foreground transition-colors"
-            title="Delete section"
-          >
-            <Trash2 className="w-4 h-4" />
-          </button>
-        </div>
-      </div>
-
-      {/* Body */}
-      {section.open && (
-        <div className={`px-4 pb-4 ${muted ? 'opacity-60' : ''}`}>
-          <Textarea
-            value={section.content}
-            onChange={(e) => onChangeText(index, e.target.value)}
-            placeholder="Write instructions for this step..."
-            className="min-h-[110px] resize-none bg-muted/30 border-border/50 text-foreground"
-          />
-        </div>
-      )}
-    </div>
-  );
-};
+// Moved inline accordion item to reusable component `FlowSectionItem`
 
 const AgentDetailMainRight = ({ setHasChanges }) => {
   const initialSections = useMemo(
@@ -100,26 +31,41 @@ const AgentDetailMainRight = ({ setHasChanges }) => {
         open: true,
         active: true,
       },
-      { title: 'Introduction', content: '', open: false, active: true },
       {
-        title: 'Collecting Appointment Details',
-        content: '',
+        title: 'Introduction',
+        content:
+          "Start the call by introducing yourself and the purpose of the call. Use a friendly and engaging tone to make the customer feel valued and open to the conversation. Begin with a professional greeting: 'Hi, this is {agent_name} from {business_name}. I'm here to help you schedule an appointment. Can I start by confirming your name?'",
         open: false,
         active: true,
       },
       {
-        title: 'Suggesting Available Slots',
-        content: '',
+        title: 'Purpose Statement',
+        content:
+          "Clearly state the reason for the call: to discuss the customer's recent purchase and gather feedback to ensure they are satisfied with the product and service.",
         open: false,
         active: true,
       },
       {
-        title: 'Confirming Appointment',
-        content: '',
+        title: 'Information Gathering',
+        content:
+          'Ask open-ended questions about their experience with the product, any concerns they might have, or additional needs they might require assistance with. Listen actively to their responses.',
         open: false,
         active: true,
       },
-      { title: 'Friendly Closing', content: '', open: false, active: true },
+      {
+        title: 'Goal Achievements',
+        content:
+          'Based on their feedback, offer solutions or additional support if necessary. Emphasize any benefits or features of the products that align with their needs.',
+        open: false,
+        active: true,
+      },
+      {
+        title: 'Closing',
+        content:
+          'Thank the customer for their time, reiterate your support, and provide your contact information for future assistance. Encourage them to reach out anytime for help.',
+        open: false,
+        active: true,
+      },
     ],
     [],
   );
@@ -254,7 +200,7 @@ const AgentDetailMainRight = ({ setHasChanges }) => {
 
           <div className="space-y-3">
             {sections.map((section, index) => (
-              <SectionItem
+              <FlowSectionItem
                 key={`${section.title}-${index}`}
                 index={index}
                 section={section}
@@ -264,6 +210,18 @@ const AgentDetailMainRight = ({ setHasChanges }) => {
                 onDelete={handleDelete}
               />
             ))}
+          </div>
+
+          {/* Provide Feedback Button */}
+          <div className="flex justify-end pt-5 ">
+            <Button
+              variant="default"
+              size="sm"
+              // className="bg-primary hover:bg-cyan-600 text-white"
+              className={`bg-primary hover:bg-primary/80 text-white`}
+            >
+              Provide feedback
+            </Button>
           </div>
         </div>
       </div>
