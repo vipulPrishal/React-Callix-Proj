@@ -71,7 +71,7 @@ const AgentDetailNavbar = ({
   };
 
   return (
-    <div className="w-screen border-b border-border/200  mt-[-25px] bg-background/100 backdrop-blur-sm sticky top-0 z-50">
+    <div className=" border-b border-border/200 ml-[-20px] mt-[-25px] bg-background/100 backdrop-blur-sm sticky top-0 z-50">
       <Container>
         <div className="flex items-center justify-between w-full">
           {/* Left Side */}
