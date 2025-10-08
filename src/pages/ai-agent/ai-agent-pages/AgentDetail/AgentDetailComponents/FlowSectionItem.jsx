@@ -35,16 +35,16 @@ const FlowSectionItem = ({
     >
       {/* Header */}
       <div
-        className={`flex items-center justify-between px-3 py-3 border-b border-border/30 ${
+        className={`flex items-center justify-between px-3 py-3 border-b border-border/90 ${
           muted ? 'opacity-60' : ''
         }`}
       >
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 ">
           <button
             className="p-1 rounded hover:bg-muted/40 cursor-move"
             title="Drag to reorder"
           >
-            <GripVertical className="w-4 h-4 text-muted-foreground" />
+            <GripVertical className="w-4 h-4 text-muted-foreground " />
           </button>
           <button
             className="p-1 rounded hover:bg-muted/40"
@@ -56,13 +56,13 @@ const FlowSectionItem = ({
               <ChevronRight className="w-4 h-4" />
             )}
           </button>
-          <span className="text-sm font-medium text-foreground select-none">
+          <span className="text-sm font-medium text-foreground select-none ">
             {index + 1}. {section.title}
           </span>
         </div>
 
-        <div className="flex items-center gap-3">
-          <span className="text-xs text-muted-foreground">
+        <div className="flex items-center gap-3 ">
+          <span className="text-xs text-muted-foreground ">
             {section.active ? 'ON' : 'OFF'}
           </span>
           <Toggle

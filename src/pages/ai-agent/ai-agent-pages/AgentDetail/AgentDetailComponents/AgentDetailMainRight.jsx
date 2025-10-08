@@ -135,7 +135,7 @@ const AgentDetailMainRight = ({ setHasChanges }) => {
         </div>
 
         {/* Welcome Message */}
-        <div className="space-y-2">
+        <div className="space-y-2 border border-border/80 p-4 rounded-lg">
           <div className="flex items-center justify-between">
             <span className="text-sm text-foreground font-medium">
               Welcome Message
@@ -175,7 +175,7 @@ const AgentDetailMainRight = ({ setHasChanges }) => {
               className="min-h-[64px] resize-none bg-muted/30 border-border/50 text-foreground pr-20"
               placeholder="Type the welcome message…"
             />
-            <div className="flex items-center justify-between mt-1 text-xs text-muted-foreground px-1">
+            <div className="flex items-center justify-between mt-1 text-xs opacity-70 px-1">
               <span>Character limit: 300</span>
               <span>{300 - welcomeMessage.length} remaining</span>
             </div>
@@ -183,8 +183,8 @@ const AgentDetailMainRight = ({ setHasChanges }) => {
         </div>
 
         {/* Conversational Flow */}
-        <div className="space-y-3">
-          <div className="flex items-center justify-between">
+        <div className="space-y-3  border border-border/80 p-4 rounded-lg">
+          <div className="flex items-center justify-between ">
             <span className="text-sm text-foreground font-medium">
               Conversational Flow (Assistant's Instructions)
             </span>
