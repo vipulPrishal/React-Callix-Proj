@@ -82,7 +82,7 @@ const AgentDetail = () => {
   }, [isResizing]);
 
   return (
-    <div className="min-h-screen  bg-background flex flex-col">
+    <div className=" bg-background flex flex-col h-[calc(100vh-200px)] ">
       {/* Navbar Component */}
       <AgentDetailNavbar
         agentName={agentName}

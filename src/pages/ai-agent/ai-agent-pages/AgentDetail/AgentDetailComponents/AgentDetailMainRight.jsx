@@ -107,7 +107,7 @@ const AgentDetailMainRight = ({ setHasChanges }) => {
   };
 
   return (
-    <div className="flex-1 bg-background overflow-y-auto">
+    <div className="flex-1 bg-background overflow-y-auto  mb-5">
       <div className="h-full p-6 space-y-6">
         {/* Tabs mimic (static for now) */}
         <div className="flex gap-2 text-sm">
@@ -211,19 +211,19 @@ const AgentDetailMainRight = ({ setHasChanges }) => {
               />
             ))}
           </div>
-
-          {/* Provide Feedback Button */}
-          <div className="flex justify-end pt-5 ">
-            <Button
-              variant="default"
-              size="sm"
-              // className="bg-primary hover:bg-cyan-600 text-white"
-              className={`bg-primary hover:bg-primary/80 text-white`}
-            >
-              Provide feedback
-            </Button>
-          </div>
         </div>
+
+        {/* Provide Feedback Button */}
+        {/* <div className="flex justify-end pt-5 "> */}
+        <Button
+          variant="default"
+          size="sm"
+          // className="bg-primary hover:bg-cyan-600 text-white"
+          className={`bg-primary hover:bg-primary/80 text-white fixed justify-end bottom-15 right-10 px-5 py-4`}
+        >
+          Provide feedback
+        </Button>
+        {/* </div> */}
       </div>
     </div>
   );
