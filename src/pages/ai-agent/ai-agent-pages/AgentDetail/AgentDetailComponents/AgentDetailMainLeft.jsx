@@ -159,7 +159,7 @@ const AgentDetailMainLeft = ({ width, agentId }) => {
               // User Message - Dark grey bubble with white text
               <div className="flex justify-end">
                 <div className="max-w-[85%]">
-                  <div className="bg-muted/50 border border-border/50 rounded-lg p-3">
+                  <div className="bg-primary/20 border border-border/50 rounded-lg p-3">
                     <p className="text-foreground text-sm whitespace-pre-line">
                       {message.content}
                     </p>
@@ -173,7 +173,7 @@ const AgentDetailMainLeft = ({ width, agentId }) => {
               // System Message - Primary color background, full width
               <div className="flex justify-start">
                 <div className="w-full">
-                  <div className="bg-primary/20 border border-primary/50 rounded-lg p-3 mb-1">
+                  <div className="bg-primary/10 border border-primary/50 rounded-lg p-3 mb-1">
                     <p className="text-primary text-sm">{message.content}</p>
                   </div>
                 </div>
@@ -182,7 +182,7 @@ const AgentDetailMainLeft = ({ width, agentId }) => {
               // Assistant Message - Dark grey bubble
               <div className="flex justify-start">
                 <div className="max-w-[85%]">
-                  <div className="bg-muted/50 border border-border/50 rounded-lg p-3">
+                  <div className="bg-muted/100 border border-border/50 rounded-lg p-3">
                     <p className="text-foreground text-sm whitespace-pre-line">
                       {message.content}
                     </p>
@@ -236,7 +236,7 @@ const AgentDetailMainLeft = ({ width, agentId }) => {
               onKeyPress={handleKeyPress}
               placeholder={typewriterText}
               rows={4}
-              className="min-h-[110px] text-base resize-none border-none scrollbar-hide focus:!border-none focus:!ring-0 bg-transparent p-0 pr-14 text-foreground"
+              className="min-h-[100px] text-base resize-none border-none scrollbar-hide focus:!border-none focus:!ring-0 bg-transparent p-0 pr-14 text-foreground"
             />
           </div>
           <button
