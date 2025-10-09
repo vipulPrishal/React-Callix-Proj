@@ -28,7 +28,7 @@ const AgentDetailMainRight = ({ setHasChanges }) => {
         title: 'Agent Role & Context',
         content:
           'You are a courteous and organized virtual assistant who calls customers to schedule appointments with {business_name}. Your goal is to efficiently book appointments, ensure calendar accuracy, and make the process as smooth as possible for the customer.',
-        open: true,
+        open: false,
         active: true,
       },
       {
