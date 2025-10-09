@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import AgentDetailMainLeft from './AgentDetailComponents/AgentDetailMainLeft';
-import AgentDetailMainRight from './AgentDetailComponents/AgentDetailMainRight';
+import AgentDetailMainRight from './AgentDetailComponents/AgentDetailMainRight/AgentDetailMainRight';
 import AgentDetailNavbar from './AgentDetailComponents/AgentDetailNavbar';
 
 const AgentDetail = () => {

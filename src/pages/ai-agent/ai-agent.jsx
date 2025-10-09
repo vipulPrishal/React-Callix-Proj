@@ -118,7 +118,10 @@ const AiAgent = () => {
       // await saveAgent({ id: agentId, prompt, createdAt: new Date() });
 
       // Navigate to the new agent page
-      navigate(`/ai-agent/agent/${agentId}`);
+      // navigate(`/ai-agent/agent/${agentId}`);
+      navigate(`/ai-agent/agent/${agentId}`, {
+        state: { promptText: prompt },
+      });
     } catch (error) {
       console.error('Error creating agent:', error);
     } finally {

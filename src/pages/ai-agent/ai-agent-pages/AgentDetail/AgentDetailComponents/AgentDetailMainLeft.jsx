@@ -1,17 +1,21 @@
 // ----- version 2:----- (making the left component)------------------
 import React, { useEffect, useRef, useState } from 'react';
 import { Send } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 
 const AgentDetailMainLeft = ({ width, agentId }) => {
+  const location = useLocation();
+  const promptText = location.state?.promptText || '';
+
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   // Typewriter placeholder state
   const prompts = [
     'Let me know how I can help you…',
-    'Ask anything like: “How do I integrate with N8N?”',
+    'Ask anything like: "How do I integrate with N8N?"',
     'Describe what you want your agent to do…',
   ];
   const [typewriterText, setTypewriterText] = useState('');
@@ -63,7 +67,9 @@ const AgentDetailMainLeft = ({ width, agentId }) => {
       const userMessage = {
         id: 1,
         type: 'user',
-        content: `Create a voice AI agent to schedule an appointments. Personality: - Courteous, organized, and efficient. Capabilities: - Check calendars and find open times in real time. - Offer the best and backup slots automatically. Call Flow: 1. Professional greeting. 2. Collect caller's name, desired service, and preferred dates/times. 3. Suggest available slots and confirm selection. 4. Provide confirmation 5. End with a friendly closing. Error Handling: - If availability changes mid-call, apologize and offer the next best slot. - Clarify unclear dates/times (e.g., "Did you mean next Tuesday, June 10th?"). Goals: - Make scheduling painless for customers. - Reduce back-and-forth and no-shows. - Keep staff calendars accurate. - Free front-desk teams for personal interactions.`,
+        content:
+          promptText ||
+          `Create a voice AI agent to schedule an appointments. Personality: - Courteous, organized, and efficient. Capabilities: - Check calendars and find open times in real time. - Offer the best and backup slots automatically. Call Flow: 1. Professional greeting. 2. Collect caller's name, desired service, and preferred dates/times. 3. Suggest available slots and confirm selection. 4. Provide confirmation 5. End with a friendly closing. Error Handling: - If availability changes mid-call, apologize and offer the next best slot. - Clarify unclear dates/times (e.g., "Did you mean next Tuesday, June 10th?"). Goals: - Make scheduling painless for customers. - Reduce back-and-forth and no-shows. - Keep staff calendars accurate. - Free front-desk teams for personal interactions.`,
         timestamp: createdAt, // use actual creation time
       };
 
@@ -77,7 +83,7 @@ const AgentDetailMainLeft = ({ width, agentId }) => {
 
       setMessages([userMessage, systemMessage]);
     }
-  }, [messages.length, agentId]);
+  }, [messages.length, agentId, promptText]);
 
   const addUserMessage = (content) => {
     const newMessage = {
@@ -142,11 +148,11 @@ const AgentDetailMainLeft = ({ width, agentId }) => {
 
   return (
     <div
-      className="bg-background border-r border-border/30 flex flex-col justify-between mb-4 scrollbar-thin"
+      className="bg-background border-r border-border/30 flex flex-col h-full"
       style={{ width: `${width}%` }}
     >
       {/* Messages Container */}
-      <div className=" overflow-y-auto p-4 space-y-4">
+      <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.map((message) => (
           <div key={message.id} className="flex flex-col">
             {message.type === 'user' ? (

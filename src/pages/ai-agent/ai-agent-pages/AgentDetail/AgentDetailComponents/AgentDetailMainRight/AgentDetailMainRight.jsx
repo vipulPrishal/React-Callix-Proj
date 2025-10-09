@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
-import FlowSectionItem from './FlowSectionItem';
+import FlowSectionItem from '../FlowSectionItem';
 
 const Toggle = ({ checked, onChange }) => (
   <button
