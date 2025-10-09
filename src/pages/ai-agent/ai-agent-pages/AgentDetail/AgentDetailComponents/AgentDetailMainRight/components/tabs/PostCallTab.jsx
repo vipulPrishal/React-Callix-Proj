@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import { Plus, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Trash2, Plus } from 'lucide-react';
 import {
   Select,
   SelectContent,
@@ -100,7 +100,11 @@ const PostCallTab = () => {
               </SelectContent>
             </Select>
           </div>
-          <Button variant="ghost" size="sm" className="text-destructive hover:text-destructive">
+          <Button
+            variant="ghost"
+            size="sm"
+            className="text-destructive hover:text-destructive hover:bg-destructive/10 bg-muted/50"
+          >
             <Trash2 className="w-4 h-4 mr-2" />
             Remove
           </Button>
@@ -123,13 +127,17 @@ const PostCallTab = () => {
                 <input
                   type="checkbox"
                   checked={including.callSummary}
-                  onChange={() => handleCheckboxChange('callSummary')}
-                  className="mt-1 w-4 h-4 accent-primary"
+                  onChange={(e) => {
+                    e.stopPropagation();
+                    handleCheckboxChange('callSummary');
+                  }}
+                  className="mt-1 w-4 h-4 accent-primary cursor-pointer"
                 />
                 <div>
                   <h4 className="font-medium text-sm">Call Summary</h4>
                   <p className="text-xs text-muted-foreground mt-1">
-                    A brief overview of the conversation including key points and outcomes
+                    A brief overview of the conversation including key points
+                    and outcomes
                   </p>
                 </div>
               </div>
@@ -148,8 +156,11 @@ const PostCallTab = () => {
                 <input
                   type="checkbox"
                   checked={including.fullConversation}
-                  onChange={() => handleCheckboxChange('fullConversation')}
-                  className="mt-1 w-4 h-4 accent-primary"
+                  onChange={(e) => {
+                    e.stopPropagation();
+                    handleCheckboxChange('fullConversation');
+                  }}
+                  className="mt-1 w-4 h-4 accent-primary cursor-pointer"
                 />
                 <div>
                   <h4 className="font-medium text-sm">Full Conversation</h4>
@@ -173,13 +184,17 @@ const PostCallTab = () => {
                 <input
                   type="checkbox"
                   checked={including.sentimentAnalysis}
-                  onChange={() => handleCheckboxChange('sentimentAnalysis')}
-                  className="mt-1 w-4 h-4 accent-primary"
+                  onChange={(e) => {
+                    e.stopPropagation();
+                    handleCheckboxChange('sentimentAnalysis');
+                  }}
+                  className="mt-1 w-4 h-4 accent-primary cursor-pointer"
                 />
                 <div>
                   <h4 className="font-medium text-sm">Sentiment Analysis</h4>
                   <p className="text-xs text-muted-foreground mt-1">
-                    Analysis of customer mood and emotional responses throughout the call
+                    Analysis of customer mood and emotional responses throughout
+                    the call
                   </p>
                 </div>
               </div>
@@ -198,8 +213,11 @@ const PostCallTab = () => {
                 <input
                   type="checkbox"
                   checked={including.extractedInformation}
-                  onChange={() => handleCheckboxChange('extractedInformation')}
-                  className="mt-1 w-4 h-4 accent-primary"
+                  onChange={(e) => {
+                    e.stopPropagation();
+                    handleCheckboxChange('extractedInformation');
+                  }}
+                  className="mt-1 w-4 h-4 accent-primary cursor-pointer"
                 />
                 <div>
                   <h4 className="font-medium text-sm">Extracted Information</h4>
@@ -216,15 +234,16 @@ const PostCallTab = () => {
         <div>
           <h3 className="text-sm font-medium mb-2">Extracted Variables</h3>
           <p className="text-xs text-muted-foreground mb-4">
-            Specify what variables you want to extract from the conversation. For each
-            variable, provide a name and a description of how to extract it.
+            Specify what variables you want to extract from the conversation.
+            For each variable, provide a name and a description of how to
+            extract it.
           </p>
 
-          <div className="space-y-3">
+          <div className="space-y-3 ">
             {variables.map((variable) => (
               <div
                 key={variable.id}
-                className="grid grid-cols-[1fr_2fr_auto] gap-3 items-center"
+                className="grid grid-cols-[1fr_1fr_auto] gap-3 items-center "
               >
                 <Input
                   value={variable.name}
@@ -232,21 +251,25 @@ const PostCallTab = () => {
                     handleVariableChange(variable.id, 'name', e.target.value)
                   }
                   placeholder="variable_name"
-                  className="bg-muted/30 border-border/60"
+                  className=" bg-muted/10 border-border/60 hover:bg-muted/100 focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
                 />
                 <Input
                   value={variable.description}
                   onChange={(e) =>
-                    handleVariableChange(variable.id, 'description', e.target.value)
+                    handleVariableChange(
+                      variable.id,
+                      'description',
+                      e.target.value,
+                    )
                   }
                   placeholder="Description of how to extract this variable"
-                  className="bg-muted/30 border-border/60"
+                  className="bg-muted/10 border-border/60 hover:bg-muted/100  focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
                 />
                 <Button
                   variant="ghost"
                   size="icon"
                   onClick={() => handleDeleteVariable(variable.id)}
-                  className="text-destructive hover:text-destructive hover:bg-destructive/10"
+                  className="text-destructive hover:text-destructive bg-muted/50 hover:bg-destructive/10"
                 >
                   <Trash2 className="w-4 h-4" />
                 </Button>
