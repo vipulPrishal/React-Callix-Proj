@@ -127,11 +127,9 @@ const PostCallTab = () => {
                 <input
                   type="checkbox"
                   checked={including.callSummary}
-                  onChange={(e) => {
-                    e.stopPropagation();
-                    handleCheckboxChange('callSummary');
-                  }}
-                  className="mt-1 w-4 h-4 accent-primary cursor-pointer"
+                  onChange={() => handleCheckboxChange('callSummary')}
+                  onClick={(e) => e.stopPropagation()}
+                  className="mt-1 w-4 h-4 accent-primary cursor-pointer rounded-sm"
                 />
                 <div>
                   <h4 className="font-medium text-sm">Call Summary</h4>
@@ -156,11 +154,9 @@ const PostCallTab = () => {
                 <input
                   type="checkbox"
                   checked={including.fullConversation}
-                  onChange={(e) => {
-                    e.stopPropagation();
-                    handleCheckboxChange('fullConversation');
-                  }}
-                  className="mt-1 w-4 h-4 accent-primary cursor-pointer"
+                  onChange={() => handleCheckboxChange('fullConversation')}
+                  onClick={(e) => e.stopPropagation()}
+                  className="mt-1 w-4 h-4 accent-primary cursor-pointer rounded-sm"
                 />
                 <div>
                   <h4 className="font-medium text-sm">Full Conversation</h4>
@@ -184,11 +180,9 @@ const PostCallTab = () => {
                 <input
                   type="checkbox"
                   checked={including.sentimentAnalysis}
-                  onChange={(e) => {
-                    e.stopPropagation();
-                    handleCheckboxChange('sentimentAnalysis');
-                  }}
-                  className="mt-1 w-4 h-4 accent-primary cursor-pointer"
+                  onChange={() => handleCheckboxChange('sentimentAnalysis')}
+                  onClick={(e) => e.stopPropagation()}
+                  className="mt-1 w-4 h-4 accent-primary cursor-pointer rounded-sm"
                 />
                 <div>
                   <h4 className="font-medium text-sm">Sentiment Analysis</h4>
@@ -213,11 +207,9 @@ const PostCallTab = () => {
                 <input
                   type="checkbox"
                   checked={including.extractedInformation}
-                  onChange={(e) => {
-                    e.stopPropagation();
-                    handleCheckboxChange('extractedInformation');
-                  }}
-                  className="mt-1 w-4 h-4 accent-primary cursor-pointer"
+                  onChange={() => handleCheckboxChange('extractedInformation')}
+                  onClick={(e) => e.stopPropagation()}
+                  className="mt-1 w-4 h-4 accent-primary cursor-pointer rounded-sm"
                 />
                 <div>
                   <h4 className="font-medium text-sm">Extracted Information</h4>
