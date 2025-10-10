@@ -12,7 +12,7 @@ const TabsNavbar = ({ activeTab, setActiveTab }) => {
   ];
 
   return (
-    <div className="flex-shrink-0 border-b border-border/80 px-6 py-4 bg-background">
+    <div className="flex-shrink-0 border-b border-border/80 px-6 pt-2 pb-3 bg-background">
       <div className="flex gap-2 text-sm flex-wrap">
         {tabs.map((tab) => (
           <Button

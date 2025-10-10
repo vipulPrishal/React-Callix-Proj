@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import TabsNavbar from './components/TabsNavbar';
 import ProvideFeedback from './components/ProvideFeedback';
-import DetailsTab from './components/tabs/DetailsTab';
-import KnowledgeBaseTab from './components/tabs/KnowledgeBaseTab';
-import IntegrationsTab from './components/tabs/IntegrationsTab';
 import ConfigurationsTab from './components/tabs/ConfigurationsTab';
+import DetailsTab from './components/tabs/DetailsTab';
+import IntegrationsTab from './components/tabs/IntegrationsTab';
+import KnowledgeBaseTab from './components/tabs/KnowledgeBaseTab';
 import PostCallTab from './components/tabs/PostCallTab';
 import RecentCallsTab from './components/tabs/RecentCallsTab';
+import TabsNavbar from './components/TabsNavbar';
 
 const AgentDetailMainRight = ({ setHasChanges }) => {
   const [activeTab, setActiveTab] = useState('details');
@@ -35,7 +35,7 @@ const AgentDetailMainRight = ({ setHasChanges }) => {
       <TabsNavbar activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {/* Scrollable Middle - Tab Content */}
-      <div className="flex-1 overflow-y-auto min-h-0">
+      <div className="flex-1  overflow-y-auto min-h-0 ">
         {renderTabContent()}
       </div>
 

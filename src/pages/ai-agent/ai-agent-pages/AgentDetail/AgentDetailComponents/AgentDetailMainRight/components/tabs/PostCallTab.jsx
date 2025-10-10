@@ -122,7 +122,7 @@ const PostCallTab = () => {
   };
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-6 space-y-6 border border-border/80 m-3 rounded-2xl bg-primary/4">
       {/* Header */}
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-semibold">Post-Call Delivery Settings</h2>

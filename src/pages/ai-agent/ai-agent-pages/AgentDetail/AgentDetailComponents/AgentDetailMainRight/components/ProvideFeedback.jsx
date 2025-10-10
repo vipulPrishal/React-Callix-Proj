@@ -8,7 +8,7 @@ const ProvideFeedback = () => {
         <Button
           variant="default"
           size="sm"
-          className="bg-primary hover:bg-primary/80  text-white"
+          className="bg-[#01a2a2] hover:bg-[#01a2a2]/80 text-black text-[14px] py-4"
         >
           Provide feedback
         </Button>
