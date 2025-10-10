@@ -36,6 +36,7 @@ const CheckboxCard = ({ id, checked, onChange, title, description }) => (
   </div>
 );
 
+// The main PostCallTab component
 const PostCallTab = () => {
   const [deliveryMethod, setDeliveryMethod] = useState('');
   const [including, setIncluding] = useState({
@@ -153,7 +154,7 @@ const PostCallTab = () => {
           <Button
             variant="ghost"
             size="sm"
-            className="text-destructive hover:text-destructive hover:bg-destructive/20 bg-muted/80"
+            className="text-destructive hover:text-destructive hover:bg-destructive/20 bg-muted/80 border border-border/60"
           >
             <Trash2 className="w-4 h-4 mr-2" />
             Remove
@@ -216,7 +217,7 @@ const PostCallTab = () => {
                   variant="ghost"
                   size="icon"
                   onClick={() => handleDeleteVariable(variable.id)}
-                  className="text-destructive hover:text-destructive hover:bg-destructive/20 bg-muted/80"
+                  className="text-destructive hover:text-destructive hover:bg-destructive/20 bg-muted/80 border border-border/60"
                 >
                   <Trash2 className="w-4 h-4" />
                 </Button>
@@ -228,9 +229,9 @@ const PostCallTab = () => {
             variant="outline"
             size="sm"
             onClick={handleAddVariable}
-            className="mt-4 border-primary/40 text-primary hover:bg-primary/20 "
+            className="mt-4 border-primary/100 text-primary/100 hover:bg-primary/15 "
           >
-            <Plus className="w-4 h-4 mr-2" />
+            <Plus className="w-4 h-4  text-primary/100" />
             Add Variable
           </Button>
         </div>
