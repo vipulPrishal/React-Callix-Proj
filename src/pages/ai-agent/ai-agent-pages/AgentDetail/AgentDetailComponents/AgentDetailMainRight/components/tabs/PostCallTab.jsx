@@ -10,6 +10,32 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 
+// Reusable checkbox card component
+const CheckboxCard = ({ id, checked, onChange, title, description }) => (
+  <div
+    className={`border rounded-lg p-4 cursor-pointer transition-colors ${
+      checked
+        ? 'border-primary bg-primary/5'
+        : 'border-border/60 hover:border-border'
+    }`}
+    onClick={() => onChange(id)}
+  >
+    <div className="flex items-start gap-3">
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={() => onChange(id)}
+        onClick={(e) => e.stopPropagation()}
+        className="mt-1 w-4 h-4 accent-primary cursor-pointer rounded-sm"
+      />
+      <div>
+        <h4 className="font-medium text-sm">{title}</h4>
+        <p className="text-xs text-muted-foreground mt-1">{description}</p>
+      </div>
+    </div>
+  </div>
+);
+
 const PostCallTab = () => {
   const [deliveryMethod, setDeliveryMethod] = useState('');
   const [including, setIncluding] = useState({
@@ -18,6 +44,32 @@ const PostCallTab = () => {
     sentimentAnalysis: true,
     extractedInformation: true,
   });
+
+  // Including options configuration
+  const includingOptions = [
+    {
+      id: 'callSummary',
+      title: 'Call Summary',
+      description:
+        'A brief overview of the conversation including key points and outcomes',
+    },
+    {
+      id: 'fullConversation',
+      title: 'Full Conversation',
+      description: 'Complete transcript of the conversation with timestamps',
+    },
+    {
+      id: 'sentimentAnalysis',
+      title: 'Sentiment Analysis',
+      description:
+        'Analysis of customer mood and emotional responses throughout the call',
+    },
+    {
+      id: 'extractedInformation',
+      title: 'Extracted Information',
+      description: 'Key data points extracted from the conversation',
+    },
+  ];
   const [variables, setVariables] = useState([
     {
       id: 1,
@@ -47,13 +99,11 @@ const PostCallTab = () => {
     'SMS (Available for Paid users)',
   ];
 
-  const handleCheckboxChange = (key) => {
+  const handleCheckboxChange = (key) =>
     setIncluding((prev) => ({ ...prev, [key]: !prev[key] }));
-  };
 
-  const handleDeleteVariable = (id) => {
+  const handleDeleteVariable = (id) =>
     setVariables((prev) => prev.filter((v) => v.id !== id));
-  };
 
   const handleAddVariable = () => {
     const newVariable = {
@@ -114,111 +164,16 @@ const PostCallTab = () => {
         <div>
           <h3 className="text-sm font-medium mb-3">Including</h3>
           <div className="grid grid-cols-2 gap-4">
-            {/* Call Summary */}
-            <div
-              className={`border rounded-lg p-4 cursor-pointer transition-colors ${
-                including.callSummary
-                  ? 'border-primary bg-primary/5'
-                  : 'border-border/60 hover:border-border'
-              }`}
-              onClick={() => handleCheckboxChange('callSummary')}
-            >
-              <div className="flex items-start gap-3">
-                <input
-                  type="checkbox"
-                  checked={including.callSummary}
-                  onChange={() => handleCheckboxChange('callSummary')}
-                  onClick={(e) => e.stopPropagation()}
-                  className="mt-1 w-4 h-4 accent-primary cursor-pointer rounded-lg"
-                />
-                <div>
-                  <h4 className="font-medium text-sm">Call Summary</h4>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    A brief overview of the conversation including key points
-                    and outcomes
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Full Conversation */}
-            <div
-              className={`border rounded-lg p-4 cursor-pointer transition-colors ${
-                including.fullConversation
-                  ? 'border-primary bg-primary/5'
-                  : 'border-border/60 hover:border-border'
-              }`}
-              onClick={() => handleCheckboxChange('fullConversation')}
-            >
-              <div className="flex items-start gap-3">
-                <input
-                  type="checkbox"
-                  checked={including.fullConversation}
-                  onChange={() => handleCheckboxChange('fullConversation')}
-                  onClick={(e) => e.stopPropagation()}
-                  className="mt-1 w-4 h-4 accent-primary cursor-pointer rounded-sm"
-                />
-                <div>
-                  <h4 className="font-medium text-sm">Full Conversation</h4>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    Complete transcript of the conversation with timestamps
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Sentiment Analysis */}
-            <div
-              className={`border rounded-lg p-4 cursor-pointer transition-colors ${
-                including.sentimentAnalysis
-                  ? 'border-primary bg-primary/5'
-                  : 'border-border/60 hover:border-border'
-              }`}
-              onClick={() => handleCheckboxChange('sentimentAnalysis')}
-            >
-              <div className="flex items-start gap-3">
-                <input
-                  type="checkbox"
-                  checked={including.sentimentAnalysis}
-                  onChange={() => handleCheckboxChange('sentimentAnalysis')}
-                  onClick={(e) => e.stopPropagation()}
-                  className="mt-1 w-4 h-4 accent-primary cursor-pointer rounded-sm"
-                />
-                <div>
-                  <h4 className="font-medium text-sm">Sentiment Analysis</h4>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    Analysis of customer mood and emotional responses throughout
-                    the call
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Extracted Information */}
-            <div
-              className={`border rounded-lg p-4 cursor-pointer transition-colors ${
-                including.extractedInformation
-                  ? 'border-primary bg-primary/5'
-                  : 'border-border/60 hover:border-border'
-              }`}
-              onClick={() => handleCheckboxChange('extractedInformation')}
-            >
-              <div className="flex items-start gap-3">
-                <input
-                  type="checkbox"
-                  checked={including.extractedInformation}
-                  onChange={() => handleCheckboxChange('extractedInformation')}
-                  onClick={(e) => e.stopPropagation()}
-                  className="mt-1 w-4 h-4 accent-primary cursor-pointer rounded-lg"
-                />
-                <div>
-                  <h4 className="font-medium text-sm">Extracted Information</h4>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    Key data points extracted from the conversation
-                  </p>
-                </div>
-              </div>
-            </div>
+            {includingOptions.map((option) => (
+              <CheckboxCard
+                key={option.id}
+                id={option.id}
+                checked={including[option.id]}
+                onChange={handleCheckboxChange}
+                title={option.title}
+                description={option.description}
+              />
+            ))}
           </div>
         </div>
 
