@@ -10,37 +10,39 @@ const RecentCallsTab = () => {
   useEffect(() => {
     const loadCallHistory = () => {
       // MOCK DATA FOR DEMO - Comment out when not needed
-      // const mockCalls = [
-      //   {
-      //     id: 1,
-      //     phoneNumber: '+1 (555) 123-4567',
-      //     duration: '3m 45s',
-      //     status: 'Completed',
-      //     timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(), // 2 hours ago
-      //   },
-      //   {
-      //     id: 2,
-      //     phoneNumber: '+1 (555) 987-6543',
-      //     duration: '1m 20s',
-      //     status: 'Completed',
-      //     timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000).toISOString(), // 5 hours ago
-      //   },
-      //   {
-      //     id: 3,
-      //     phoneNumber: '+1 (555) 456-7890',
-      //     duration: '0m 15s',
-      //     status: 'Missed',
-      //     timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(), // 1 day ago
-      //   },
-      //   {
-      //     id: 4,
-      //     phoneNumber: '+1 (555) 321-0987',
-      //     duration: '5m 12s',
-      //     status: 'Completed',
-      //     timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000).toISOString(), // 2 days ago
-      //   },
-      // ];
-      // setCallHistory(mockCalls);
+      const mockCalls = [
+        {
+          id: 1,
+          phoneNumber: '+1 (555) 123-4567',
+          duration: '3m 45s',
+          status: 'Completed',
+          timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(), // 2 hours ago
+        },
+        {
+          id: 2,
+          phoneNumber: '+1 (555) 987-6543',
+          duration: '1m 20s',
+          status: 'Completed',
+          timestamp: new Date(Date.now() - 5 * 60 * 60 * 1000).toISOString(), // 5 hours ago
+        },
+        {
+          id: 3,
+          phoneNumber: '+1 (555) 456-7890',
+          duration: '0m 15s',
+          status: 'Missed',
+          timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(), // 1 day ago
+        },
+        {
+          id: 4,
+          phoneNumber: '+1 (555) 321-0987',
+          duration: '5m 12s',
+          status: 'Completed',
+          timestamp: new Date(
+            Date.now() - 2 * 24 * 60 * 60 * 1000,
+          ).toISOString(), // 2 days ago
+        },
+      ];
+      setCallHistory(mockCalls);
       // END MOCK DATA
 
       // Try to get from localStorage first
@@ -61,7 +63,7 @@ const RecentCallsTab = () => {
   // Empty state when no calls
   if (callHistory.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[400px] p-6">
+      <div className="flex flex-col items-center justify-center  min-h-[400px] p-6">
         <div className="w-20 h-20 rounded-full bg-muted/20 flex items-center justify-center mb-6">
           <Phone
             className="w-10 h-10 text-muted-foreground"
