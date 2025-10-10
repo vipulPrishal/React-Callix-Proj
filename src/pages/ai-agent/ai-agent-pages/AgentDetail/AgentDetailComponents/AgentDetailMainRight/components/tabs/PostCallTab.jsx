@@ -103,7 +103,7 @@ const PostCallTab = () => {
           <Button
             variant="ghost"
             size="sm"
-            className="text-destructive hover:text-destructive hover:bg-destructive/10 bg-muted/50"
+            className="text-destructive hover:text-destructive hover:bg-destructive/20 bg-muted/80"
           >
             <Trash2 className="w-4 h-4 mr-2" />
             Remove
@@ -129,7 +129,7 @@ const PostCallTab = () => {
                   checked={including.callSummary}
                   onChange={() => handleCheckboxChange('callSummary')}
                   onClick={(e) => e.stopPropagation()}
-                  className="mt-1 w-4 h-4 accent-primary cursor-pointer rounded-sm"
+                  className="mt-1 w-4 h-4 accent-primary cursor-pointer rounded-lg"
                 />
                 <div>
                   <h4 className="font-medium text-sm">Call Summary</h4>
@@ -209,7 +209,7 @@ const PostCallTab = () => {
                   checked={including.extractedInformation}
                   onChange={() => handleCheckboxChange('extractedInformation')}
                   onClick={(e) => e.stopPropagation()}
-                  className="mt-1 w-4 h-4 accent-primary cursor-pointer rounded-sm"
+                  className="mt-1 w-4 h-4 accent-primary cursor-pointer rounded-lg"
                 />
                 <div>
                   <h4 className="font-medium text-sm">Extracted Information</h4>
@@ -261,7 +261,7 @@ const PostCallTab = () => {
                   variant="ghost"
                   size="icon"
                   onClick={() => handleDeleteVariable(variable.id)}
-                  className="text-destructive hover:text-destructive bg-muted/50 hover:bg-destructive/10"
+                  className="text-destructive hover:text-destructive hover:bg-destructive/20 bg-muted/80"
                 >
                   <Trash2 className="w-4 h-4" />
                 </Button>
@@ -273,7 +273,7 @@ const PostCallTab = () => {
             variant="outline"
             size="sm"
             onClick={handleAddVariable}
-            className="mt-4 border-primary/40 text-primary hover:bg-primary/10"
+            className="mt-4 border-primary/40 text-primary hover:bg-primary/20 "
           >
             <Plus className="w-4 h-4 mr-2" />
             Add Variable
