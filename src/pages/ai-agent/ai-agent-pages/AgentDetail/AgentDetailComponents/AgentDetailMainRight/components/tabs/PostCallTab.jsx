@@ -187,11 +187,11 @@ const PostCallTab = () => {
             extract it.
           </p>
 
-          <div className="space-y-3 ">
+          <div className="space-y-3">
             {variables.map((variable) => (
               <div
                 key={variable.id}
-                className="grid grid-cols-[1fr_1fr_auto] gap-3 items-center "
+                className="bg-[#1c1c1c] border border-border/60 rounded-lg p-3 grid grid-cols-[1fr_1fr_auto] gap-3 items-center"
               >
                 <Input
                   value={variable.name}
@@ -199,7 +199,7 @@ const PostCallTab = () => {
                     handleVariableChange(variable.id, 'name', e.target.value)
                   }
                   placeholder="variable_name"
-                  className=" bg-muted/10 border-border/60 hover:bg-muted/100 focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                  className="bg-[#1c1c1c] border-white/15 py-5 focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
                 />
                 <Input
                   value={variable.description}
@@ -211,15 +211,15 @@ const PostCallTab = () => {
                     )
                   }
                   placeholder="Description of how to extract this variable"
-                  className="bg-muted/10 border-border/60 hover:bg-muted/100  focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
+                  className="bg-[#1c1c1c] border border-white/15 py-5 focus:border-primary focus:ring-1 focus:ring-primary transition-colors"
                 />
                 <Button
                   variant="ghost"
                   size="icon"
                   onClick={() => handleDeleteVariable(variable.id)}
-                  className="text-destructive hover:text-destructive hover:bg-destructive/20 bg-muted/80 border border-border/60"
+                  className="text-destructive hover:text-destructive hover:bg-destructive/20 border py-5 px-5 border-white/15 "
                 >
-                  <Trash2 className="w-4 h-4" />
+                  <Trash2 className="w-4 h-4  " />
                 </Button>
               </div>
             ))}
